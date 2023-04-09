@@ -1,0 +1,56 @@
+<nav class="navbar navbar-light bg-primary">
+  <div class="container-fluid">
+    <h1 style="color: white">Smartphones</h1>
+    <div class="d-flex">
+      <button
+        type="button"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        class="btn btn-success"
+      >
+        Add Product
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="table-responsive-sm">
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th scope="col">productid</th>
+        <th scope="col">categoryid</th>
+        <th scope="col">brandid</th>
+        <th scope="col">vendorid</th>
+        <th scope="col">productName</th>
+        <th scope="col">Price</th>
+        <th scope="col">color</th>
+        <th scope="col">RAM</th>
+        <th scope="col">camera</th>
+        <th scope="col">Dimensions</th>
+        <th scope="col">Image</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let row of products">
+        <td>{{ row.id }}</td>
+        <td>{{ row.categoryid }}</td>
+        <td>{{ row.brand }}</td>
+        <td>{{ row.vendorid }}</td>
+        <td>{{ row.productname }}</td>
+        <td>{{ row.price | currency : "INR" }}</td>
+        <td>{{ row.color }}</td>
+        <td>{{ row.RAM }}</td>
+        <td>{{ row.camera }}</td>
+        <td>
+          {{ row.dimension.l }}mm, {{ row.dimension.b }}mm,
+          {{ row.dimension.w }}mm
+        </td>
+        <td><img src="{{ row.image }}" style="height: 50px; width: 35px" /></td>
+        <!-- <button  (click)="onEdit(row)" style="color:aliceblue;"  type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"class= "btn btn-info">Edit</button>  -->
+        <!-- <button type="button" (click) = "deleteDiscount(row)" class="btn btn-danger mx-3">Delete</button> -->
+      </tr>
+    </tbody>
+  </table>
+</div>
