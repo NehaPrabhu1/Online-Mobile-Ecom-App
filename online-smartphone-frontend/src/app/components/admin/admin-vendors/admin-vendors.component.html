@@ -1,1 +1,71 @@
-<p>admin-vendors works!</p>
+<br />
+<br />
+
+<div class="row">
+  <div class="col-md-6">
+    <nav class="navbar navbar-light bg-primary">
+      <div class="container-fluid">
+        <h1 style="color: white">Smartphone Vendors</h1>
+        <div class="d-flex"></div>
+      </div>
+    </nav>
+    <div class="table-responsive-sm">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Vendor id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of vendors">
+            <td>{{ row.id }}</td>
+            <td>{{ row.name }}</td>
+            <td>{{ row.email }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card" style="float: right">
+      <div class="card-body">
+        <h5 class="card-title" id="exampleModalLabel">Add Vendors</h5>
+        <form action="" #vendorform="ngForm">
+          <div>
+            <label class="form-label" for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-control"
+              [(ngModel)]="newVendor.name"
+            />
+          </div>
+          <div>
+            <label class="form-label" for="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              class="form-control"
+              [(ngModel)]="newVendor.email"
+            />
+          </div>
+          <br />
+          <div class="modal-footer">
+            <input type="reset" class="btn btn-secondary" value="Reset" />&nbsp;
+            <button
+              type="button"
+              (click)="addNewVendor()"
+              class="btn btn-primary"
+            >
+              Add
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
