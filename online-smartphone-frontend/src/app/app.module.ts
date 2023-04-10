@@ -9,6 +9,8 @@ import { LogoComponent } from './components/logo/logo.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { AdminProductsComponent } from './components/admin/admin-products/admin-products.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { AdminVendorsComponent } from './components/admin/admin-vendors/admin-vendors.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,12 +18,14 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     LogoComponent,
     NavigationComponent,
-    AdminProductsComponent
+    AdminProductsComponent,
+    AdminVendorsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
