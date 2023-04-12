@@ -1,17 +1,5 @@
 [
-  {
-    "id": 1,
-    "name": "Phone Retail",
-    "email": "phoneretailers@yahoo.com"
-  },
-  {
-    "id": 2,
-    "name": "ABC Shop",
-    "email": "abcshopsmartphones@gmail.com"
-  },
-  {
-    "id": 3,
-    "name": "Home Retailers",
-    "email": "homeretailers@gmail.com"
-  }
+  { "id": 1, "name": "Phone Retail", "email": "phoneretailers@yahoo.com" },
+  { "id": 2, "name": "ABC Shop", "email": "abcshopsmartphones@gmail.com" },
+  { "id": 3, "name": "Home Retailers", "email": "homeretailers@gmail.com" }
 ]

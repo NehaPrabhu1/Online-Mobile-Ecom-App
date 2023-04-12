@@ -46,6 +46,14 @@ let writeVendor = (vendor) => {
   const vendorJSON = JSON.stringify(vendors);
   writeFileSync('json files/vendors.json', vendorJSON);
 };
+
+let writeOrder = (order) => {
+  const orders = loadOrders();
+  order.id = orders.length + 1;
+  orders.push(order);
+  const orderJSON = JSON.stringify(orders);
+  writeFileSync('json_files/orders.json');
+};
 //--------------------------------------------------------------------------
 
 module.exports = {
@@ -60,4 +68,5 @@ module.exports = {
   writeUser,
   writeProduct,
   writeVendor,
+  writeOrder,
 };

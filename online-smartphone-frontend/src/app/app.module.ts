@@ -11,6 +11,8 @@ import { AdminProductsComponent } from './components/admin/admin-products/admin-
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AdminVendorsComponent } from './components/admin/admin-vendors/admin-vendors.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { FooterComponent } from './components/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +21,9 @@ import { AdminVendorsComponent } from './components/admin/admin-vendors/admin-ve
     LogoComponent,
     NavigationComponent,
     AdminProductsComponent,
-    AdminVendorsComponent
+    AdminVendorsComponent,
+    AboutusComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

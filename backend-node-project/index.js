@@ -7,6 +7,8 @@ const {
   loadVendors,
   writeProduct,
   writeVendor,
+  writeOrder,
+  loadOrders,
 } = require('./json_models');
 
 const express = require('express');
@@ -71,6 +73,29 @@ app.get('/vendors/:id', (req, res) => {
   });
 });
 
+app.get('/users/:email/:password', (req, res) => {
+  const email = req.params.email;
+  const password = req.params.password;
+  const users = loadUsers();
+  users.filter((user) => {
+    if (user.email == email && user.password == password) {
+      res.send(user);
+    }
+  });
+});
+
+app.get('/orders/user/:userid', (req, res) => {
+  const userid = parseInt(req.params.userid);
+  const orders = loadOrders();
+  const sendOrders = [];
+  orders.filter((order) => {
+    if (order.userid == userid) {
+      sendOrders.push(order);
+    }
+  });
+  res.send(sendOrders);
+});
+
 app.post('/users/addUser', (req, res) => {
   const user = req.body;
   writeUser(user);
@@ -87,4 +112,10 @@ app.post('/vendors/addVendor', (req, res) => {
   const vendor = req.body;
   writeVendor(vendor);
   res.send(201).send('vendor added');
+});
+
+app.post('/orders/addOrder', (req, res) => {
+  const order = req.body;
+  writeOrder(order);
+  res.send(201).send('order added');
 });

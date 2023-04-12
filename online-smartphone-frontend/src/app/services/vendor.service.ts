@@ -15,4 +15,8 @@ export class VendorService {
   getVendorById(id:number){
     return this.http.get<any>('http://localhost:3000/vendors/'+id);
   }
+
+  addNewVendor(vendor:any){
+    return this.http.post('http://localhost:3000/vendors/addVendor',vendor);
+  }
 }
