@@ -9,6 +9,8 @@ const {
   writeVendor,
   writeOrder,
   loadOrders,
+  updateProduct,
+  deleteProduct,
 } = require('./json_models');
 
 const express = require('express');
@@ -118,4 +120,17 @@ app.post('/orders/addOrder', (req, res) => {
   const order = req.body;
   writeOrder(order);
   res.send(201).send('order added');
+});
+
+//--------------put = update ------------------------//
+app.put('/product/updateProduct', (req, res) => {
+  const product = req.body;
+  updateProduct(product);
+});
+
+//---------------delete--------------------------//
+app.delete('/product/deleteProduct/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  console.log(id);
+  deleteProduct(id);
 });

@@ -1,4 +1,5 @@
 const { readFileSync, writeFileSync } = require('fs');
+const moment = require('moment');
 
 //---------------reading from json files-----------------------
 let loadUsers = () => JSON.parse(readFileSync('json files/users.json'));
@@ -50,9 +51,40 @@ let writeVendor = (vendor) => {
 let writeOrder = (order) => {
   const orders = loadOrders();
   order.id = orders.length + 1;
+  order.orderdate = moment().format('YYYY-MM-DD');
+  order.orderime = moment().format('HH:mm:ss');
   orders.push(order);
+  console.log(order);
   const orderJSON = JSON.stringify(orders);
-  writeFileSync('json_files/orders.json');
+  writeFileSync('json files/orders.json', orderJSON);
+};
+
+let updateProduct = (product) => {
+  const products = loadProducts();
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].id == product.id) {
+      products.splice(i, 1, product);
+      products[i] = product;
+    }
+  }
+  //products.push(product);
+  const productJSON = JSON.stringify(products);
+  writeFileSync('json files/products.json', productJSON);
+};
+
+let deleteProduct = (productid) => {
+  const products = loadProducts();
+  let indexToDelete = 0;
+  for (let i = 0; i < products.length; i++) {
+    if (products[i].id == productid) {
+      indexToDelete = i;
+    } else if (products[i].id > productid) {
+      products[i].id--;
+    }
+  }
+  products.splice(indexToDelete, 1);
+  const productJSON = JSON.stringify(products);
+  writeFileSync('json files/products.json', productJSON);
 };
 //--------------------------------------------------------------------------
 
@@ -69,4 +101,6 @@ module.exports = {
   writeProduct,
   writeVendor,
   writeOrder,
+  updateProduct,
+  deleteProduct,
 };

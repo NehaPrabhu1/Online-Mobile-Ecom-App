@@ -21,9 +21,8 @@ export class AdminVendorsComponent implements OnInit {
     console.log(this.newVendor);
     this.vendorService.addNewVendor(this.newVendor).subscribe(res =>{
       console.log(res);
-      this.ngOnInit();
-    },
-      (err) =>this.ngOnInit());
+    });
+    window.location.reload();
   }
 
 }
