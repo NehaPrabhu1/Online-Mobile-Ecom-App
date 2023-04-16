@@ -101,25 +101,25 @@ app.get('/orders/user/:userid', (req, res) => {
 app.post('/users/addUser', (req, res) => {
   const user = req.body;
   writeUser(user);
-  res.status(201).send('user added');
+  res.sendStatus(201).send('user added');
 });
 
 app.post('/products/addProduct', (req, res) => {
   const product = req.body;
   writeProduct(product);
-  res.status(201).send('product added');
+  res.statusStatus(201).send('product added');
 });
 
 app.post('/vendors/addVendor', (req, res) => {
   const vendor = req.body;
   writeVendor(vendor);
-  res.send(201).send('vendor added');
+  res.sendStatus(201).send('vendor added');
 });
 
 app.post('/orders/addOrder', (req, res) => {
   const order = req.body;
   writeOrder(order);
-  res.send(201).send('order added');
+  res.sendStatus(201).send('order added');
 });
 
 //--------------put = update ------------------------//

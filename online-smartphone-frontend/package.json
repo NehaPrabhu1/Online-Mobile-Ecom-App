@@ -22,6 +22,7 @@
     "aos": "^2.3.4",
     "bootstrap": "^5.2.3",
     "jquery": "^3.6.4",
+    "ng2-search-filter": "^0.5.1",
     "popper.js": "^1.16.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

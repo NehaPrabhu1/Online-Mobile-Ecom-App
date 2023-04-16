@@ -1,0 +1,9 @@
+nav div li a.nav-link{
+    color: white;
+}
+
+nav div li a.nav-link:hover {
+
+    color: gray;
+    
+}

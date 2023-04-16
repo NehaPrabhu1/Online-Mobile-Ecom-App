@@ -16,6 +16,10 @@ export class ProductService {
     return this.http.get<any>('http://localhost:3000/products/'+id);
   }
 
+  public getProductByBrand(id:number) {
+    return this.http.get(`http://localhost:3000/products/brand/${id}`);
+  }
+
   addNewProduct(product:any){
     return this.http.post('http://localhost:3000/products/addProduct',product);
   }

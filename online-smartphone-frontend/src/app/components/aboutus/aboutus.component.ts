@@ -9,7 +9,6 @@ import * as AOS from 'aos';
 })
 export class AboutusComponent implements OnInit {
 
-
   productCount:number = 0;
   productCountStop:any = setInterval(()=>{
     this.productCount++;
@@ -44,10 +43,7 @@ export class AboutusComponent implements OnInit {
   constructor() {
    }
  ngOnInit(): void {
-  window.addEventListener('load', () => {
     this.aos_init();
-  });
-
   }
 
   aos_init() {

@@ -32,20 +32,20 @@
     "id": 2
   },
   {
+    "id": 3,
     "categoryid": 2,
     "brandid": 4,
     "vendorid": 2,
     "productname": "Xiaomi Redmi Note 10 Pro",
     "color": "bronze",
     "image": "https://www.notebookcheck.net/uploads/tx_nbc2/XiaomiRedmiNote10ProMax.jpg",
+    "price": 21000,
+    "resolution": "FHD+",
     "os": "MIUI V13 (Android 12)",
-    "price": 20000,
+    "camera": 108,
     "RAM": 6,
     "storage": 128,
-    "camera": 108,
-    "resolution": "FHD+",
-    "dimension": { "l": 164, "b": 76, "w": 8 },
-    "id": 3
+    "dimension": { "l": 164, "b": 76, "w": 8 }
   },
   {
     "categoryid": 2,

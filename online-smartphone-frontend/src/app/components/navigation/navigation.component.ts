@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  isAdmin:boolean = true;
+  isAdmin:boolean = false;
 
   constructor() { }
 

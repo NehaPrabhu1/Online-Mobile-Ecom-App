@@ -53,13 +53,14 @@
           <td>{{ row.os }}</td>
           <td>{{ row.camera }} mpx</td>
           <td>
-            {{ row.dimension.l }}mm, {{ row.dimension.b }}mm,
+            {{ row.dimension.l }}mm<br />
+            {{ row.dimension.b }}mm <br />
             {{ row.dimension.w }}mm
           </td>
           <td>
             <img src="{{ row.image }}" style="height: 50px; width: 35px" />
           </td>
-          <td>
+          <td width="200px">
             <button
               style="color: aliceblue"
               type="button"
@@ -67,6 +68,7 @@
               data-bs-toggle="modal"
               data-bs-target="#changeModal"
               (click)="updateProduct(row)"
+              value="Update"
             >
               Update
             </button>
@@ -160,9 +162,11 @@
               <label class="form-label" for="ProductName">Product Name</label>
               <input
                 type="text"
-                id="productName"
+                id="productname"
                 name="productname"
                 class="form-control"
+                required
+                minlength="4"
                 [(ngModel)]="newProduct.productname"
               />
             </div>

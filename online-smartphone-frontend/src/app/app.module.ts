@@ -9,10 +9,15 @@ import { LogoComponent } from './components/logo/logo.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { AdminProductsComponent } from './components/admin/admin-products/admin-products.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminVendorsComponent } from './components/admin/admin-vendors/admin-vendors.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NavigationAdminComponent } from './components/navigation-admin/navigation-admin.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { ProductComponent } from './components/product/product.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,13 +28,19 @@ import { FooterComponent } from './components/footer/footer.component';
     AdminProductsComponent,
     AdminVendorsComponent,
     AboutusComponent,
-    FooterComponent
+    FooterComponent,
+    NavigationAdminComponent,
+    ContactUsComponent,
+    ProductComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    Ng2SearchPipeModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

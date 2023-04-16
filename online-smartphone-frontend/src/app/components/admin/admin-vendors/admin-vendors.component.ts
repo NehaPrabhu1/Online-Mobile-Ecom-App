@@ -17,12 +17,46 @@ export class AdminVendorsComponent implements OnInit {
     this.vendorService.getAllVendors().subscribe(res => this.vendors = res);
   }
 
+  validateVendor():boolean{
+    if(this.newVendor.name == null ||  this.newVendor.name.trim() == ''){
+      alert("Add vendor name");
+      return false;
+    }
+    if(this.newVendor.email == null || this.newVendor.email.trim() == ''){
+      alert("Add vendor email");
+      return false;
+    }
+    if(this.newVendor.address == null || this.newVendor.address.trim() == ''){
+      alert("Add vendor address");
+      return false;
+    }
+    if(this.newVendor.city == null || this.newVendor.city.trim() == ''){
+      alert("Add vendor city");
+      return false;
+    }
+    if(this.newVendor.pincode == null || this.newVendor.pincode.trim() == ''){
+      alert("Add vendor pincode");
+      return false;
+    }
+    if(this.newVendor.phone == null || this.newVendor.phone.trim() == ''){
+      alert("Add vendor contact");
+      return false;
+    }
+    return true;
+  }
   addNewVendor(){
-    console.log(this.newVendor);
-    this.vendorService.addNewVendor(this.newVendor).subscribe(res =>{
+    if(this.validateVendor()){
+      console.log(this.newVendor);
+      this.vendorService.addNewVendor(this.newVendor).subscribe(res =>{
       console.log(res);
+      alert("Vendor added.");
+    },
+    error =>{
+      alert("Vendor not added - "+error);
     });
-    window.location.reload();
+      window.location.reload();
+    }
+    
   }
 
 }

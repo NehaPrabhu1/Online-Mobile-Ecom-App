@@ -1,0 +1,87 @@
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+/>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: "FILL" 1, "wght" 700, "GRAD" 200, "opsz" 48;
+  }
+</style>
+<div class="container">
+  <div class="col-sm-5" style="float: left; margin-top: 20px">
+    <img
+      class="product-img"
+      src="{{ product.image }}"
+      width="400"
+      height="500"
+    />
+  </div>
+
+  <div class="col-sm-7" style="float: right">
+    <div class="details">
+      <h1>{{ product.productname }}</h1>
+      <hr />
+      <h6 class="text-muted">Category : {{ product.category }}</h6>
+      <h3>Price : {{ product.price | currency : "INR" }}</h3>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Color</th>
+            <th scope="col">
+              <i class="material-symbols-outlined">photo_camera</i>Camera
+            </th>
+            <th scope="col">
+              <i class="material-symbols-outlined"> memory</i>RAM
+            </th>
+            <th scope="col">
+              <i class="material-symbols-outlined"> storage </i>Internal Storage
+            </th>
+            <th scope="col">Resolution</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <h4
+                [style.backgroundColor]="product.color"
+                class="product-color"
+              ></h4>
+            </td>
+            <td>
+              <h5>{{ product.camera }}px</h5>
+            </td>
+            <td>
+              <h5>{{ product.RAM }} GB</h5>
+            </td>
+            <td>
+              <h5>{{ product.storage }} GB</h5>
+            </td>
+            <td>
+              <h5>{{ product.resolution }}</h5>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h6>Brand : {{ product.brand }}</h6>
+      <h6>Operating System : {{ product.os }}</h6>
+      <h6>
+        Dimension : {{ product.dimension.l }} {{ product.dimension.b }}
+        {{ product.dimension.w }}
+      </h6>
+      <h6>Vendor: {{ product.vendor }}</h6>
+      <h6>Quantity : {{ product.quantity }}</h6>
+
+      <a href="#" class="btn btn-dark">
+        <i class="fa fa-shopping-cart"> Add to Cart </i>
+      </a>
+      <!-- <div class="quantity-group">
+          <button class="btn btn-dark">-</button>
+          <input type="text" value="{{product.quantity}}" />
+          <button class="btn btn-dark">+</button>
+
+      </div> -->
+    </div>
+  </div>
+</div>
