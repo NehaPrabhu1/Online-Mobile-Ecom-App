@@ -35,6 +35,8 @@ app.get('/categories', (req, res) => res.send(loadCategories()));
 
 app.get('/vendors', (req, res) => res.send(loadVendors()));
 
+app.get('/orders', (req, res) => res.send(loadOrders()));
+
 app.get('/products/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const products = loadProducts();

@@ -8,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class AddressComponent implements OnInit {
 
   address:any={};
+  user:any ={};
+
   constructor() { }
 
   ngOnInit(): void {
+    this.user = JSON.parse(sessionStorage.getItem("user")!);
+    console.log(this.user);
   }
 
   submitAddress():void{

@@ -6,34 +6,47 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  public loginForm!: FormGroup
+  public loginForm!: FormGroup;
 
-  constructor(private formbuilder: FormBuilder,private http: HttpClient, private router: Router) { }
+  constructor(
+    private formbuilder: FormBuilder,
+    private http: HttpClient,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formbuilder.group({
       email: [''],
-      password: ['', Validators.required]
-    })
-  }
-  login(){
-    this.http.get<any>("http://localhost:3000/users/"+
-    this.loginForm.value.email+"/"+this.loginForm.value.password)
-    .subscribe(res=>{
-      const user = res;
-      if(user){
-        alert('Login Succesful');
-        this.loginForm.reset()
-      this.router.navigate(["cart"])
-      }else{
-        alert("user not found")
-      }
-    },err=>{
-      alert("Something went wrong")
+      password: ['', Validators.required],
     });
   }
-
+  login() {
+    this.http
+      .get<any>(
+        'http://localhost:3001/users/' +
+          this.loginForm.value.email +
+          '/' +
+          this.loginForm.value.password
+      )
+      .subscribe(
+        (res) => {
+          const user = res;
+          if (user) {
+            alert('Login Succesful');
+            this.loginForm.reset();
+            sessionStorage.setItem('user', JSON.stringify(user));
+            if (user.role == 'user') this.router.navigate(['/home']);
+            else if (user.role == 'admin') this.router.navigate(['/admin']);
+          } else {
+            alert('user not found');
+          }
+        },
+        (err) => {
+          alert('Something went wrong');
+        }
+      );
+  }
 }

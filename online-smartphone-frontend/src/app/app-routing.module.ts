@@ -13,26 +13,29 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { CartComponent } from './components/cart/cart.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 const routes: Routes = [
-  {path: 'home' , component: ProductComponent},
-  {path: 'product', component: ProductComponent},
-  {path: 'product/:id', component: ProductDetailsComponent},
-  {path: 'contact-us' , component: ContactUsComponent},
-  {path:'admin',component:AdminDashboardComponent},
-  {path:'admin/products',component:AdminProductsComponent},
-  {path:'admin/vendors',component:AdminVendorsComponent},
-  {path:'aboutus',component:AboutusComponent},
-  {path: "address", component: AddressComponent },
-  {path: "checkout", component: CheckoutComponent },
-  {path: "orders", component: OrdersComponent },
-  {path:"login", component:LoginComponent},
-  {path:"signup", component:SignupComponent},
-  {path:"cart", component:CartComponent }
+  { path: '', component: ProductComponent },
+  { path: 'home', component: ProductComponent },
+  { path: 'product', component: ProductComponent },
+  { path: 'product/:id', component: ProductDetailsComponent },
+  { path: 'contact-us', component: ContactUsComponent },
+  { path: 'admin', component: AdminDashboardComponent },
+  { path: 'admin/products', component: AdminProductsComponent },
+  { path: 'admin/vendors', component: AdminVendorsComponent },
+  { path: 'aboutus', component: AboutusComponent },
+  { path: 'address', component: AddressComponent },
+  { path: 'checkout', component: CheckoutComponent },
+  { path: 'orders', component: OrdersComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'logout', component: LogoutComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

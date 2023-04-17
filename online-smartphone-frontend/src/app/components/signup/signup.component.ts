@@ -6,34 +6,36 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
+  public signUpForm!: FormGroup;
 
-  public signUpForm !: FormGroup;
-
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-  this.signUpForm = this.formBuilder.group({
-    email: [""],
-    firstname:[""],
-    lastname:[""],
-    role:"user",
-    address:[""],
-    mobile:[""],
-    password: [""]
-  })
-}
+    this.signUpForm = this.formBuilder.group({
+      email: [''],
+      firstname: [''],
+      lastname: [''],
+      role: 'user',
+      address: [''],
+      mobile: [''],
+      password: [''],
+    });
+  }
 
-signUp(){
-  this.http.post<any>("http://localhost:3000/users/addUser",this.signUpForm.value)
-  .subscribe(res=>{
-    alert('SIGNIN SUCCESFUL');
-  });
-  this.signUpForm.reset()
-    this.router.navigate(["login"])
-
-}
-
+  signUp() {
+    this.http
+      .post<any>('http://localhost:3001/users/addUser', this.signUpForm.value)
+      .subscribe((res) => {
+        alert('SIGNIN SUCCESFUL');
+      });
+    this.signUpForm.reset();
+    this.router.navigate(['login']);
+  }
 }

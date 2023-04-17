@@ -17,16 +17,20 @@ export class CheckoutComponent implements OnInit {
   total_payment:number = 0;
   products:any=[];
   cartItems:any = [];
+  user:any ={};
 
   constructor(private productService:ProductService,private orderService:OrderService,
     private router:Router, private cartService:CartService) { }
 
   ngOnInit(): void {
+
+    this.user = JSON.parse(sessionStorage.getItem("user")!);
+    if(this.user){
     this.address=JSON.parse(localStorage.getItem("Address")!);
     console.log(this.address);
 
     //orderitems details from localstorage
-    this.cartService.getCartProducts().subscribe(res =>{
+    this.cartService.getCartProducts(this.user.id).subscribe(res =>{
       this.cartItems = res;
       let i =1;
       for(let cartItem of this.cartItems){
@@ -52,10 +56,11 @@ export class CheckoutComponent implements OnInit {
   //   });
    //}
   }
+  }
 
   showMessage(){
     
-    this.order.userid = 1; //example
+    this.order.userid = this.user.id;
   
     this.order.total_payment =this.total_payment;
     this.order.delivery_address = this.address;

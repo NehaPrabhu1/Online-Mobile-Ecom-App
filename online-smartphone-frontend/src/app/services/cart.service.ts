@@ -11,12 +11,12 @@ export class CartService {
   postProductToCart(value:any) {
     return this.http.post('http://localhost:3000/cartProducts', value);
   }
-  getCartProducts() {
-    let apiUrl = 'http://localhost:3000/cartProducts';
+  getCartProducts(userid:number) {
+    let apiUrl = 'http://localhost:3000/cartProducts?userid='+userid;
     return this.http.get(apiUrl);
   }
   deleteProductFromCart(id:any) {
-    return this.http.delete('http://localhost:3000/cartProducts/' + id);
+    return this.http.delete('http://localhost:3000/cartProducts/'+id);
   }
 
   updateCartProduct(value:any, id:number){

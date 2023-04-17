@@ -11,12 +11,15 @@ export class OrdersComponent implements OnInit {
 
   orders:any[]=[];
   orderitems:any[] = [];
+  user:any = {};
 
   constructor(private productService:ProductService,private orderService:OrderService) { }
 
   ngOnInit(): void {
-    //get user first
-    this.orderService.getOrderByUser(1).subscribe(res=>
+    this.user = JSON.parse(sessionStorage.getItem("user")!);
+    if(this.user){
+
+      this.orderService.getOrderByUser(this.user.id).subscribe(res=>
       {
         this.orders=res;
         console.log(res);
@@ -33,6 +36,8 @@ export class OrdersComponent implements OnInit {
        }
        console.log(this.orders);
       }) 
+    }
+    
   }
 
 }

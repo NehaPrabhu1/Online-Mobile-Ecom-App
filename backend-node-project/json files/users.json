@@ -38,5 +38,15 @@
     "address": "145, B Housing, Pune",
     "mobile": 987654210,
     "password": "neha"
+  },
+  {
+    "email": "preeti@gmail.com",
+    "firstname": "Preeti",
+    "lastname": "Nair",
+    "role": "user",
+    "address": "ABC Apartments, Mumbai",
+    "mobile": "9876543210",
+    "password": "preeti",
+    "id": 5
   }
 ]
