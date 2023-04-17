@@ -41,13 +41,14 @@
         <a class="nav-link" [routerLink]="['/login']" *ngIf="!isloggedin"
           >Login</a
         >
-        <a
-          class="nav-link"
+        <button
+          class="nav-link btn btn-danger"
+          style="color: white"
           [routerLink]="['/logout']"
           *ngIf="isloggedin"
-          (click)="onClickLog()"
-          >Logout</a
         >
+          Logout
+        </button>
       </li>
     </ul>
   </div>

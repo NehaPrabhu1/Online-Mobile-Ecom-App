@@ -38,8 +38,15 @@ export class LoginComponent implements OnInit {
             alert('Login Succesful');
             this.loginForm.reset();
             sessionStorage.setItem('user', JSON.stringify(user));
-            if (user.role == 'user') this.router.navigate(['/home']);
-            else if (user.role == 'admin') this.router.navigate(['/admin']);
+            if (user.role == 'user') {
+              this.router.navigate(['/home']).then(() => {
+                window.location.reload();
+              });
+            } else if (user.role == 'admin') {
+              this.router
+                .navigate(['/admin'])
+                .then(() => window.location.reload());
+            }
           } else {
             alert('user not found');
           }
