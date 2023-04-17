@@ -9,10 +9,10 @@ export class CategoryService {
   constructor(private http:HttpClient) {}
 
   getAllCategories(){
-    return this.http.get<any[]>('http://localhost:3000/categories');
+    return this.http.get<any[]>('http://localhost:3001/categories');
   }
 
   getCategoryById(id:number){
-    return this.http.get<any>('http://localhost:3000/categories/'+id);
+    return this.http.get<any>('http://localhost:3001/categories/'+id);
   }
 }

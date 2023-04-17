@@ -18,6 +18,12 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { ProductComponent } from './components/product/product.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { AddressComponent } from './components/address/address.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { CartComponent } from './components/cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +38,13 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     NavigationAdminComponent,
     ContactUsComponent,
     ProductComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    AddressComponent,
+    CheckoutComponent,
+    OrdersComponent,
+    LoginComponent,
+    SignupComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

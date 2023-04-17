@@ -1,0 +1,86 @@
+<div class="container py-5">
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="col">
+      <div class="card my-3 shadow-3">
+        <div class="row g-0">
+          <div class="col-xl-5 d-xl-block bg-image">
+            <img
+              src="https://mdbcdn.b-cdn.net/img/Others/extended-example/delivery.webp"
+              alt="Sample photo"
+              class="img-fluid"
+            />
+          </div>
+          <div class="col-xl-6">
+            <div class="card-body p-md-3 text-black">
+              <h3 class="mb-4 text-uppercase">Shipping Address</h3>
+
+              <div class="form-outline mb-4">
+                <div class="form-outline">
+                  <label class="form-label" for="form3Example1m">City</label>
+                  <input
+                    type="text"
+                    id="form3Example1m"
+                    class="form-control form-control-lg"
+                    [(ngModel)]="address.city"
+                  />
+                </div>
+              </div>
+
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example8">Street</label>
+                <input
+                  type="text"
+                  id="form3Example8"
+                  class="form-control form-control-lg"
+                  [(ngModel)]="address.street"
+                />
+              </div>
+
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example3">Residence</label>
+                <input
+                  type="text"
+                  id="form3Example3"
+                  class="form-control form-control-lg"
+                  [(ngModel)]="address.residence"
+                />
+              </div>
+
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example3">Country</label>
+                <input
+                  type="text"
+                  id="form3Example3"
+                  class="form-control form-control-lg"
+                  [(ngModel)]="address.country"
+                />
+              </div>
+
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example2">PinCode</label>
+                <input
+                  type="text"
+                  id="form3Example2"
+                  class="form-control form-control-lg"
+                  [(ngModel)]="address.pinCode"
+                />
+              </div>
+
+              <div class="d-flex justify-content-end pt-3">
+                <button
+                  type="button"
+                  routerLink="/checkout"
+                  class="btn btn-success btn-lg ms-2"
+                  style="background-color: hsl(210, 100%, 50%)"
+                  (click)="submitAddress()"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

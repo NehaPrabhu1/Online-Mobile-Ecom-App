@@ -1,0 +1,98 @@
+<div class="container">
+  <br />
+  <div class="card">
+    <h2>Shipping Address :</h2>
+    <span>
+      {{ address.city }} , {{ address.street }} ,
+      {{ address.residence }} ,</span
+    >
+    <span> {{ address.country }} , {{ address.pinCode }}</span>
+  </div>
+  <br />
+
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-title"><h3>Order Items:</h3></div>
+        <div *ngFor="let i = index; let cartItem; of: cartItems">
+          <div class="card mb-2">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img
+                  src="{{ cartItem.image }}"
+                  class="img-fluid rounded-start"
+                  alt="img"
+                  style="height: 190px; width: 175px"
+                />
+              </div>
+              <div class="col-md-7">
+                <div class="card-body">
+                  <p class="card-text">
+                    <b>Product name: </b>{{ cartItem.productname }}<br />
+                    <b>Quantity: </b>{{ cartItem.quantity }}<br />
+                    <b>Price: </b>{{ cartItem.price }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <form action="" #paymentForm="ngForm">
+          <h3>Please select your payment options:</h3>
+          <input
+            type="radio"
+            id="pay"
+            name="pay"
+            [(ngModel)]="order.payment_method"
+            value="COD"
+          />
+          <label for="COD">Cash On delivery/Pay on delivery</label><br />
+          <input
+            type="radio"
+            id="pay"
+            name="pay"
+            [(ngModel)]="order.payment_method"
+            value="UPI"
+          />
+          <label for="UPI">UPI </label><br />
+          <input
+            type="radio"
+            id="pay"
+            name="pay"
+            [(ngModel)]="order.payment_method"
+            value="Net"
+          />
+          <label for="NET">Netbanking</label> <br />
+          <input
+            type="radio"
+            id="pay"
+            name="pay"
+            [(ngModel)]="order.payment_method"
+            value="Card"
+          />
+          <label for="Card">Credit/debit card</label>
+          <hr />
+
+          <div class="input-group">
+            <div class="input-box">
+              <h5>Total Payment : {{ total_payment | currency : "INR" }}</h5>
+
+              <button
+                (click)="showMessage()"
+                type="submit"
+                class="btn btn-info"
+              >
+                Place Order
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br />
+</div>

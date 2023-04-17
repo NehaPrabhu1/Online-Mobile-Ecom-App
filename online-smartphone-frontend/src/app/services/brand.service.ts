@@ -9,10 +9,10 @@ export class BrandService {
   constructor(private http:HttpClient) { }
 
   getAllBrands(){
-    return this.http.get<any[]>('http://localhost:3000/brands');
+    return this.http.get<any[]>('http://localhost:3001/brands');
   }
 
   getBrandById(id:number){
-    return this.http.get<any>('http://localhost:3000/brands/'+id);
+    return this.http.get<any>('http://localhost:3001/brands/'+id);
   }
 }

@@ -1,0 +1,48 @@
+<div>
+  <h1 class="display-4">Orders</h1>
+</div>
+<hr />
+<div class="container">
+  <div *ngFor="let order of orders; let i = index">
+    <div class="d-flex p-2 card border shadow-sm p-3 mb-5 bg-white rounded">
+      <div class="id"><b>Order no.: </b>{{ order.id }}&nbsp;</div>
+      <div class="date">
+        <b>Date: </b>{{ order.orderdate | date : "mediumDate" }}&nbsp;
+      </div>
+      <div class="amount">
+        <b>Total payment: </b>{{ order.total_payment | currency : "INR" }}
+      </div>
+      <div>
+        <b>Shipping address: </b>{{ order.delivery_address.residence }},
+        {{ order.delivery_address.street }}, {{ order.delivery_address.city }},
+        {{ order.delivery_address.country }} -
+        {{ order.delivery_address.pinCode }}
+      </div>
+
+      <hr />
+      <div *ngFor="let orderitem of order.orderitems; let i = index">
+        <div class="card mb-2">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src="{{ orderitem.product.image }}"
+                class="img-fluid rounded-start"
+                alt="img"
+                style="height: 190px; width: 175px"
+              />
+            </div>
+            <div class="col-md-7">
+              <div class="card-body">
+                <p class="card-text">
+                  <b>Product name: </b>{{ orderitem.product.productname }}<br />
+                  <b>Quantity: </b>{{ orderitem.quantity }}<br />
+                  <b>Price: </b>{{ orderitem.product.price }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

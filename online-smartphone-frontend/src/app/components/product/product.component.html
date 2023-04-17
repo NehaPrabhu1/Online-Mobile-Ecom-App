@@ -8,13 +8,25 @@
   crossorigin="anonymous"
 ></script>
 
-<div class="form-group col-md-2" style="float: right; padding: 5px">
-  <h3>Filter by Brands</h3>
-
-  <div class="list-group" *ngFor="let brand of brandList">
+<!-- <div class="list-group" *ngFor="let brand of brandList">
     <button class="btn btn-outline-dark" (click)="getProductByBrands(brand.id)">
       {{ brand.name }}
     </button>
+  </div> -->
+<div class="form-group">
+  <div class="dropdown col-md-2" style="float: right; padding: 5px">
+    <h3>Filter by Brands</h3>
+    <select
+      class="form-select"
+      name="brand"
+      [(ngModel)]="brandid"
+      (change)="getProductByBrands(brandid)"
+    >
+      <option [value]="0" selected="selected">Select Brand</option>
+      <option *ngFor="let brand of brandList" [value]="brand.id">
+        {{ brand.name }}
+      </option>
+    </select>
   </div>
 </div>
 
@@ -27,24 +39,28 @@
   
    </div>  -->
 
-<div class="form-group col-md-9" style="padding: 5px">
-  <input
-    type="text"
-    class="form-control"
-    placeholder="Enter Keyword for filter result"
-    [(ngModel)]="searchedKeyword"
-  />
+<div class="form-group col-md-8" style="padding: 5px">
+  <div class="input-group">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter Keyword for filter result"
+      [(ngModel)]="searchedKeyword"
+    /><span class="input-group-text" id="basic-addon1"
+      ><i class="fa-solid fa-magnifying-glass"></i
+    ></span>
+  </div>
 
   <div
     style="display: inline-block; padding: 20px"
     *ngFor="let product of productList | filter : searchedKeyword"
   >
-    <div class="card" style="width: 15rem; height: 30rem">
+    <div class="card" style="width: 16rem; height: 30rem">
       <img
         class="card-img-top"
         src="{{ product.image }}"
         alt="Card image cap"
-        width="200"
+        width="220"
         height="300"
       />
       <div class="card-body limit">
@@ -61,9 +77,9 @@
         </p>
         <!-- <p class="card-text">Dimensions:l-{{ product.dimension.l }}:b-{{ product.dimension.b }}:w-{{ product.dimension.w }}</p> -->
 
-        <a href="#" class="btn btn-dark">
+        <button class="btn btn-dark" (click)="addProductToCart(product)">
           <i class="fa fa-shopping-cart"> Add to Cart </i>
-        </a>
+        </button>
       </div>
     </div>
   </div>

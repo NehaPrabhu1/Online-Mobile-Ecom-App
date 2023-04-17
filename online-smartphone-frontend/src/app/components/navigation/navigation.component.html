@@ -22,25 +22,23 @@
         <a class="nav-link" [routerLink]="['/home']">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Admin</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Login</a>
-      </li>
-
-      <li class="nav-item">
         <a class="nav-link" [routerLink]="['/contact-us']">Contact Us</a>
       </li>
-      <li class="nav-item px-3">
+      <li class="nav-item">
         <a class="nav-link" [routerLink]="['/aboutus']" aria-current="page"
           >About Us</a
         >
       </li>
-
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" [routerLink]="['/cart']">
           Cart<i class="fa fa-shopping-cart"></i
         ></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/orders']"> Orders</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/login']">Login</a>
       </li>
     </ul>
   </div>

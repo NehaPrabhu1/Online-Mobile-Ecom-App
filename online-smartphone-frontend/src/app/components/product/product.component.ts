@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BrandService } from 'src/app/services/brand.service';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -17,7 +18,10 @@ export class ProductComponent implements OnInit {
   id:any;
   brandid:any;
 
-  constructor(productService:ProductService, private brandService:BrandService,private activeroute: ActivatedRoute) {
+  constructor(productService:ProductService, 
+    private brandService:BrandService,
+    private activeroute: ActivatedRoute,
+    private cartService:CartService) {
     this.productService = productService;
    }
 
@@ -50,7 +54,20 @@ export class ProductComponent implements OnInit {
 
   getProductByBrands(id:any){
     //this.id = this.activeroute.snapshot.paramMap.get('id');
+    if(id == '0'){
+      this.getAllProduct();
+    }
+    else{
     this.productService.getProductByBrand(id).subscribe(res => this.productList = res);
   }
+}
+
+addProductToCart(product:any){
+  console.log(product);
+  product.quantity = 1;
+  this.cartService.postProductToCart(product).subscribe(res =>{
+    alert("Product added to cart");
+  });
+}
 
 }

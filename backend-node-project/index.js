@@ -20,7 +20,7 @@ app.use(cors());
 const body_parser = require('body-parser'); //used to parse data
 app.use(body_parser.json());
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log('Server is running');
 });
 app.get('/', (req, res) => res.send('Welcome'));
@@ -96,6 +96,19 @@ app.get('/orders/user/:userid', (req, res) => {
     }
   });
   res.send(sendOrders);
+});
+
+app.get('/products/brand/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const products = loadProducts();
+  const brandProducts = [];
+  products.filter((product) => {
+    if (product.brandid == id) {
+      brandProducts.push(product);
+      console.log(product);
+    }
+  });
+  res.send(brandProducts);
 });
 
 app.post('/users/addUser', (req, res) => {
