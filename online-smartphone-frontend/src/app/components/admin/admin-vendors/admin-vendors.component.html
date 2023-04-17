@@ -1,0 +1,125 @@
+<br />
+<br />
+<div class="row">
+  <div class="col-md-8">
+    <nav class="navbar navbar-light bg-primary">
+      <div class="container-fluid">
+        <h1 style="color: white">Smartphone Vendors</h1>
+        <div class="d-flex"></div>
+      </div>
+    </nav>
+    <div class="table-responsive-sm">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Vendor id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email Address</th>
+            <th scope="col">Address Line</th>
+            <th scope="col">City</th>
+            <th scope="col">Pin Code</th>
+            <th scope="col">Contact No.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of vendors">
+            <td>{{ row.id }}</td>
+            <td>{{ row.name }}</td>
+            <td>{{ row.email }}</td>
+            <td>{{ row.address }}</td>
+            <td>{{ row.city }}</td>
+            <td>{{ row.pincode }}</td>
+            <td>{{ row.phone }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card" style="float: center">
+      <div class="card-body">
+        <h5 class="card-title" id="exampleModalLabel">Add Vendors</h5>
+        <hr />
+        <form action="" #vendorform="ngForm">
+          <div class="row">
+            <div class="col">
+              <label class="form-label" for="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-control"
+                [(ngModel)]="newVendor.name"
+              />
+            </div>
+            <div>
+              <label class="form-label" for="email">Email</label>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                class="form-control"
+                [(ngModel)]="newVendor.email"
+              />
+            </div>
+            <div class="col-md-12">
+              <label class="form-label" for="addressline">Address Line</label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                class="form-control"
+                [(ngModel)]="newVendor.address"
+              />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="city">City</label>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                class="form-control"
+                [(ngModel)]="newVendor.city"
+              />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="pincode">Pin Code</label>
+              <input
+                type="text"
+                id="pincode"
+                name="pincode"
+                class="form-control"
+                [(ngModel)]="newVendor.pincode"
+              />
+            </div>
+            <div class="col">
+              <label class="form-label" for="phone">Contact No.</label>
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                class="form-control"
+                [(ngModel)]="newVendor.phone"
+              />
+            </div>
+            <div class="modal-footer">
+              <p></p>
+              <input
+                type="reset"
+                class="btn btn-secondary"
+                value="Reset"
+              />&nbsp;
+              <button
+                type="button"
+                (click)="addNewVendor()"
+                class="btn btn-primary"
+              >
+                Add
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

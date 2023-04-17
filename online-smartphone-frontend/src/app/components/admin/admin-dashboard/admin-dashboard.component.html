@@ -1,0 +1,89 @@
+<br />
+<br />
+<div class="container">
+  <h1>Admin Dashboard</h1>
+  <br />
+  <br />
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">User Count</h5>
+          <i class="fa-solid fa-users" style="color: #000000">
+            {{ userCount }}</i
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <a class="nav-link" [routerLink]="['/admin/products']">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Product Count</h5>
+            <i class="fa-solid fa-mobile" style="color: #000000">
+              {{ productCount }}</i
+            >
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-3">
+      <a class="nav-link" [routerLink]="['/admin/vendors']">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Vendor Count</h5>
+            <i class="fa-solid fa-shop" style="color: #000000">
+              {{ vendorCount }}</i
+            >
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Brand Count</h5>
+          <i class="fa-solid fa-tag" style="color: #000000">
+            {{ brandCount }}</i
+          >
+        </div>
+      </div>
+    </div>
+    <p></p>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Total Orders</h5>
+          <i class="fa-solid fa-bag-shopping" style="color: #000000">
+            {{ orderCount }}</i
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Total Sales - Products</h5>
+          <i class="fa-solid fa-cart-shopping" style="color: #000000">
+            {{ orderitemCount }}</i
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Total Sales - Amount</h5>
+          <i class="fa-solid fa-indian-rupee-sign" style="color: #000000">
+            {{ totalSales }}</i
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

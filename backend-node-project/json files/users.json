@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "email": "pooja@gmail.com",
+    "firstname": "Pooja",
+    "lastname": "Ambavale",
+    "role": "user",
+    "address": "123, 1 Street, Mumbai",
+    "mobile": 1234567890,
+    "password": "pooja"
+  },
+  {
+    "id": 2,
+    "email": "pallavi@gmail.com",
+    "firstname": "Pallavi",
+    "lastname": "Ghuge",
+    "role": "user",
+    "address": "26, A Apartment, Delhi ",
+    "mobile": 9087654321,
+    "password": "pallavi"
+  },
+  {
+    "id": 3,
+    "email": "kaustub@gmail.com",
+    "firstname": "Kaustub",
+    "lastname": "Gawade",
+    "role": "user",
+    "address": "10, Colony road, Mumbai",
+    "mobile": 1256903478,
+    "password": "kaustub"
+  },
+  {
+    "id": 4,
+    "email": "neha@gmail.com",
+    "firstname": "Neha",
+    "lastname": "Prabhu",
+    "role": "admin",
+    "address": "145, B Housing, Pune",
+    "mobile": 987654210,
+    "password": "neha"
+  },
+  {
+    "email": "preeti@gmail.com",
+    "firstname": "Preeti",
+    "lastname": "Nair",
+    "role": "user",
+    "address": "ABC Apartments, Mumbai",
+    "mobile": "9876543210",
+    "password": "preeti",
+    "id": 5
+  }
+]
