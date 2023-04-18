@@ -103,5 +103,53 @@
     "id": 6,
     "orderdate": "2023-04-17",
     "orderime": "18:57:48"
+  },
+  {
+    "payment_method": "UPI",
+    "userid": 2,
+    "total_payment": 42000,
+    "delivery_address": {
+      "city": "Mumbai",
+      "street": "AB Lane",
+      "residence": "Hill Apartment, A-101",
+      "country": "India",
+      "pinCode": "400001"
+    },
+    "orderitems": [{ "id": 1, "productid": 3, "quantity": 2 }],
+    "id": 7,
+    "orderdate": "2023-04-18",
+    "orderime": "10:19:02"
+  },
+  {
+    "payment_method": "Card",
+    "userid": 1,
+    "total_payment": 140000,
+    "delivery_address": {
+      "city": "Hyderabad",
+      "street": "Road 1",
+      "residence": "ABC Apartments, B-202",
+      "country": "India",
+      "pinCode": "330440"
+    },
+    "orderitems": [{ "id": 1, "productid": 4, "quantity": 1 }],
+    "id": 8,
+    "orderdate": "2023-04-18",
+    "orderime": "10:21:40"
+  },
+  {
+    "userid": 2,
+    "total_payment": 120000,
+    "delivery_address": {
+      "city": "Hyderabad",
+      "street": "Road 1",
+      "residence": "ABC Apartments, B-202",
+      "country": "India",
+      "pinCode": "400001"
+    },
+    "orderitems": [{ "id": 1, "productid": 6, "quantity": 2 }],
+    "payment_method": "Net",
+    "id": 9,
+    "orderdate": "2023-04-18",
+    "orderime": "10:30:45"
   }
 ]

@@ -60,6 +60,8 @@ export class ProductDetailsComponent implements OnInit {
       console.log(product);
       product.quantity = 1;
       product.userid = this.user.id;
+      product.productid = product.id;
+      delete product.id;
       this.cartService.postProductToCart(product).subscribe((res) => {
         alert('Product added to cart');
       });

@@ -65,9 +65,11 @@ export class ProductComponent implements OnInit {
 
   addProductToCart(product: any) {
     if (this.user) {
-      console.log(product);
       product.quantity = 1;
       product.userid = this.user.id;
+      product.productid = product.id;
+      delete product.id;
+      //console.log(product);
       this.cartService.postProductToCart(product).subscribe((res) => {
         alert('Product added to cart');
       });
