@@ -31,7 +31,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.user = JSON.parse(sessionStorage.getItem('user')!);
     this.id = this.activeroute.snapshot.paramMap.get('id');
 
     this.productService.getProductById(this.id).subscribe(
@@ -56,18 +55,13 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addProductToCart(product: any) {
-    if (this.user) {
-      console.log(product);
-      product.quantity = 1;
-      product.userid = this.user.id;
-      product.productid = product.id;
-      delete product.id;
-      this.cartService.postProductToCart(product).subscribe((res) => {
-        alert('Product added to cart');
-      });
-    } else {
-      alert('Login first !!!');
-      this.router.navigate(['/login']);
-    }
+    product.quantity = 1;
+    // product.userid = this.user.id;
+    // product.productid = product.id;
+    // delete product.id;
+    this.cartService.postProductToCart(product).subscribe((res) => {
+      alert('Product added to cart');
+      this.router.navigate(['cart']).then(() => window.location.reload());
+    });
   }
 }

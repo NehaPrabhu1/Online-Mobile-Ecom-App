@@ -17,11 +17,41 @@
         {{ order.delivery_address.street }}, {{ order.delivery_address.city }},
         {{ order.delivery_address.country }} -
         {{ order.delivery_address.pinCode }}
+        <div>
+          <button
+            class="btn btn-primary"
+            type="button"
+            data-bs-toggle="collapse"
+            [attr.data-bs-target]="'#collapseExample' + order.id"
+            aria-expanded="false"
+            [attr.aria-controls]="'collapseExample' + order.id"
+            *ngIf="iscollapsed"
+            (click)="showDetails()"
+          >
+            Show Details
+          </button>
+          <button
+            class="btn btn-primary"
+            type="button"
+            data-bs-toggle="collapse"
+            [attr.data-bs-target]="'#collapseExample' + order.id"
+            aria-expanded="false"
+            [attr.aria-controls]="'collapseExample' + order.id"
+            *ngIf="!iscollapsed"
+            (click)="showDetails()"
+          >
+            Hide Details
+          </button>
+        </div>
       </div>
 
-      <hr />
-      <div *ngFor="let orderitem of order.orderitems; let i = index">
-        <div class="card mb-2">
+      <div
+        *ngFor="let orderitem of order.orderitems; let i = index"
+        class="collapse"
+        [id]="'collapseExample' + order.id"
+      >
+        <br />
+        <div class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded mb-2">
           <div class="row g-0">
             <div class="col-md-4">
               <img

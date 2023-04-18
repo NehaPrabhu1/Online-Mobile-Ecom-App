@@ -1,0 +1,6 @@
+.container-fluid{
+    background: linear-gradient(to bottom left, #ffffff 0%, #ccccff 100%);
+    background-repeat: no-repeat;
+    height:100%;
+    overflow-y: scroll;
+}

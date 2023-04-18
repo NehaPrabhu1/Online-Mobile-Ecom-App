@@ -32,7 +32,14 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/cart']">
           Cart<i class="fa fa-shopping-cart"></i
-        ></a>
+          ><span
+            class="badge badge-warning"
+            id="lblCartCount"
+            *ngIf="cartCount > 0"
+          >
+            {{ cartCount }}
+          </span>
+        </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/orders']"> Orders</a>

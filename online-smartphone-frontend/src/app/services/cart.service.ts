@@ -2,24 +2,23 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http:HttpClient) { }
-
-  postProductToCart(value:any) {
+  postProductToCart(value: any) {
     return this.http.post('http://localhost:3000/cartProducts', value);
   }
-  getCartProducts(userid:number) {
-    let apiUrl = 'http://localhost:3000/cartProducts?userid='+userid;
+  getCartProducts() {
+    let apiUrl = 'http://localhost:3000/cartProducts';
     return this.http.get(apiUrl);
   }
-  deleteProductFromCart(id:any) {
-    return this.http.delete('http://localhost:3000/cartProducts/'+id);
+  deleteProductFromCart(id: any) {
+    return this.http.delete('http://localhost:3000/cartProducts/' + id);
   }
 
-  updateCartProduct(value:any, id:number){
-    return this.http.put('http://localhost:3000/cartProducts/'+id, value);
+  updateCartProduct(value: any, id: number) {
+    return this.http.put('http://localhost:3000/cartProducts/' + id, value);
   }
 }

@@ -32,13 +32,13 @@ export class CheckoutComponent implements OnInit {
       console.log(this.address);
 
       //orderitems details from localstorage
-      this.cartService.getCartProducts(this.user.id).subscribe((res) => {
+      this.cartService.getCartProducts().subscribe((res) => {
         this.cartItems = res;
         let i = 1;
         for (let cartItem of this.cartItems) {
           let orderitem: any = {};
           orderitem.id = i;
-          orderitem.productid = cartItem.productid;
+          orderitem.productid = cartItem.id;
           orderitem.quantity = cartItem.quantity;
           this.orderitems.push(orderitem);
           this.total_payment += cartItem.quantity * cartItem.price;
