@@ -13,6 +13,8 @@ export class LogoutComponent implements OnInit {
     console.log('Logged out');
     sessionStorage.removeItem('user');
     sessionStorage.clear();
+    localStorage.removeItem('Address');
+    localStorage.clear();
     this.router.navigate(['/login']).then(() => window.location.reload());
   }
 }

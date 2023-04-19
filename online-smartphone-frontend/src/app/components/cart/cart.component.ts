@@ -69,6 +69,7 @@ export class CartComponent implements OnInit {
     if (this.isloggedin) {
       this.router.navigate(['checkout']);
     } else {
+      alert('You need to login first!!');
       this.router.navigate(['/login']);
     }
   }

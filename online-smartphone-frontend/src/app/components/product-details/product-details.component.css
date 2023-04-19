@@ -8,3 +8,11 @@
     height: 40px;
     border-radius: 50%;
 }
+
+.zoom img {
+    transition: transform .5s ease;
+  }
+
+.zoom:hover img{
+    transform: scale(1.2);
+}

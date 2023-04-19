@@ -61,18 +61,18 @@
       class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded"
       style="width: 16rem; height: 30rem"
     >
-      <img
-        class="card-img-top"
-        src="{{ product.image }}"
-        alt="Card image cap"
-        width="200"
-        height="300"
-      />
+      <a class="link" [routerLink]="['/product', product.id]">
+        <img
+          class="card-img-top"
+          src="{{ product.image }}"
+          alt="Card image cap"
+          width="200"
+          height="300"
+        />
+      </a>
       <div class="card-body limit">
         <h6 class="card-title">
-          <a class="link" [routerLink]="['/product', product.id]">{{
-            product.productname | uppercase
-          }}</a>
+          {{ product.productname | uppercase }}
         </h6>
 
         <h5 class="card-text"><i class="fa fa-inr"></i>{{ product.price }}</h5>
