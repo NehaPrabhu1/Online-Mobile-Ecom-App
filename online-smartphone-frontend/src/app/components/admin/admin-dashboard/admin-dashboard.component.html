@@ -1,12 +1,9 @@
 <br />
-<br />
 <div class="container">
-  <h1>Admin Dashboard</h1>
-  <br />
-  <br />
+  <h4>Admin Dashboard</h4>
   <div class="row">
     <div class="col-md-3">
-      <div class="card">
+      <div class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded">
         <div class="card-body">
           <h5 class="card-title">User Count</h5>
           <i class="fa-solid fa-users" style="color: #000000">
@@ -18,7 +15,7 @@
 
     <div class="col-md-3">
       <a class="nav-link" [routerLink]="['/admin/products']">
-        <div class="card">
+        <div class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded">
           <div class="card-body">
             <h5 class="card-title">Product Count</h5>
             <i class="fa-solid fa-mobile" style="color: #000000">
@@ -31,7 +28,7 @@
 
     <div class="col-md-3">
       <a class="nav-link" [routerLink]="['/admin/vendors']">
-        <div class="card">
+        <div class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded">
           <div class="card-body">
             <h5 class="card-title">Vendor Count</h5>
             <i class="fa-solid fa-shop" style="color: #000000">
@@ -43,7 +40,7 @@
     </div>
 
     <div class="col-md-3">
-      <div class="card">
+      <div class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded">
         <div class="card-body">
           <h5 class="card-title">Brand Count</h5>
           <i class="fa-solid fa-tag" style="color: #000000">
@@ -52,38 +49,75 @@
         </div>
       </div>
     </div>
-    <p></p>
-    <div class="col-md-3">
-      <div class="card">
+  </div>
+  <div class="row">
+    <div class="col-md-7">
+      <div class="card chart mb-4 shadow-sm p-3 mb-5 bg-white rounded">
         <div class="card-body">
-          <h5 class="card-title">Total Orders</h5>
-          <i class="fa-solid fa-bag-shopping" style="color: #000000">
-            {{ orderCount }}</i
-          >
+          <h5 class="card-title">Products Sold</h5>
+          <div class="chart-container">
+            <canvas id="MyChart">{{ chart }}</canvas>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="col-md-3">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Total Sales - Products</h5>
-          <i class="fa-solid fa-cart-shopping" style="color: #000000">
-            {{ orderitemCount }}</i
-          >
+    <div class="col-md-5">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded">
+            <div class="form-group">
+              <h5 class="card-title">Filter by date</h5>
+              <select
+                class="form-select"
+                name="brand"
+                [(ngModel)]="orderdate"
+                (change)="onDateChange(orderdate)"
+              >
+                <option [value]="0" selected="selected">Overall</option>
+                <option *ngFor="let odate of orderdates" [value]="odate">
+                  {{ odate }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded">
+            <div class="card-body">
+              <h5 class="card-title">Total Orders</h5>
+              <i class="fa-solid fa-bag-shopping" style="color: #000000">
+                {{ orderCount }}</i
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded">
+            <div class="card-body">
+              <h5 class="card-title">Total Sales - Products</h5>
+              <i class="fa-solid fa-cart-shopping" style="color: #000000">
+                {{ orderitemCount }}</i
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded">
+            <div class="card-body">
+              <h5 class="card-title">Total Sales - Amount</h5>
+              <i class="fa-solid fa-indian-rupee-sign" style="color: #000000">
+                {{ totalSales }}</i
+              >
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="col-md-3">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Total Sales - Amount</h5>
-          <i class="fa-solid fa-indian-rupee-sign" style="color: #000000">
-            {{ totalSales }}</i
-          >
-        </div>
-      </div>
-    </div>
+    <br />
   </div>
 </div>

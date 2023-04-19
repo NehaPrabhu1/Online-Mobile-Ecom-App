@@ -1,3 +1,4 @@
+
 .about .content h3 {
     font-weight: 700;
     font-size: 32px;
@@ -54,6 +55,11 @@
 
  .counter-box .counter{
   font-size: 40px;
+ }
+
+ .carousel{
+  overflow-x:hidden ;
+  overflow-y: hidden;
  }
 
  .carousel-item img{

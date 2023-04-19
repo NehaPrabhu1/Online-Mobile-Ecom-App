@@ -24,11 +24,9 @@ export class CartComponent implements OnInit {
       this.isloggedin = true;
     } else {
       this.isloggedin = false;
-      alert('Login First');
-      this.router.navigate(['/login']);
     }
 
-    this.cartService.getCartProducts(this.user.id).subscribe((product) => {
+    this.cartService.getCartProducts().subscribe((product) => {
       this.cartProduct = product;
       if (this.cartProduct.length >= 1)
         this.singleProduct = this.cartProduct[0];
@@ -41,7 +39,8 @@ export class CartComponent implements OnInit {
       this.cartService.deleteProductFromCart(id).subscribe((response) => {
         console.log('Data Deleted - ', response);
         alert('Product Deleted Succesfully');
-        this.ngOnInit();
+        //this.ngOnInit();
+        window.location.reload();
       });
   }
 
@@ -63,6 +62,15 @@ export class CartComponent implements OnInit {
       this.cartService
         .updateCartProduct(this.updatedCartProduct, cartProduct.id)
         .subscribe((res) => console.log(cartProduct));
+    }
+  }
+
+  placeOrder() {
+    if (this.isloggedin) {
+      this.router.navigate(['checkout']);
+    } else {
+      alert('You need to login first!!');
+      this.router.navigate(['/login']);
     }
   }
 }

@@ -1,19 +1,22 @@
 <div class="container">
   <br />
   <h1>{{ user.firstname }}'s Order</h1>
-  <div class="card">
+  <div class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded">
     <h2>Shipping Address :</h2>
     <span>
       {{ address.city }} , {{ address.street }} ,
       {{ address.residence }} ,</span
     >
     <span> {{ address.country }} , {{ address.pinCode }}</span>
+    <div>
+      Do you wish to edit shipping address then click
+      <a class="btn btn-success" routerLink="/address">Edit Address</a>
+    </div>
   </div>
-  <br />
 
   <div class="row">
     <div class="col-md-8">
-      <div class="card">
+      <div class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded">
         <div class="card-title"><h3>Order Items:</h3></div>
         <div *ngFor="let i = index; let cartItem; of: cartItems">
           <div class="card mb-2">
@@ -23,7 +26,7 @@
                   src="{{ cartItem.image }}"
                   class="img-fluid rounded-start"
                   alt="img"
-                  style="height: 190px; width: 175px"
+                  style="height: 150px; width: 125px"
                 />
               </div>
               <div class="col-md-7">
@@ -41,7 +44,7 @@
       </div>
     </div>
     <div class="col-md-4">
-      <div class="card">
+      <div class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded">
         <form action="" #paymentForm="ngForm">
           <h3>Please select your payment options:</h3>
           <input
@@ -85,7 +88,7 @@
               <button
                 (click)="showMessage()"
                 type="submit"
-                class="btn btn-info"
+                class="btn btn-primary"
               >
                 Place Order
               </button>

@@ -8,6 +8,19 @@
   crossorigin="anonymous"
 ></script>
 
+<div class="form-group col-md-7" style="padding: 5px">
+  <div class="input-group">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter Keyword for filter result"
+      [(ngModel)]="searchedKeyword"
+    /><span class="input-group-text" id="basic-addon1"
+      ><i class="fa-solid fa-magnifying-glass"></i
+    ></span>
+  </div>
+</div>
+
 <!-- <div class="list-group" *ngFor="let brand of brandList">
     <button class="btn btn-outline-dark" (click)="getProductByBrands(brand.id)">
       {{ brand.name }}
@@ -39,35 +52,27 @@
   
    </div>  -->
 
-<div class="form-group col-md-8" style="padding: 5px">
-  <div class="input-group">
-    <input
-      type="text"
-      class="form-control"
-      placeholder="Enter Keyword for filter result"
-      [(ngModel)]="searchedKeyword"
-    /><span class="input-group-text" id="basic-addon1"
-      ><i class="fa-solid fa-magnifying-glass"></i
-    ></span>
-  </div>
-
+<div class="col-md-10">
   <div
     style="display: inline-block; padding: 20px"
     *ngFor="let product of productList | filter : searchedKeyword"
   >
-    <div class="card" style="width: 16rem; height: 30rem">
-      <img
-        class="card-img-top"
-        src="{{ product.image }}"
-        alt="Card image cap"
-        width="220"
-        height="300"
-      />
+    <div
+      class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded"
+      style="width: 16rem; height: 30rem"
+    >
+      <a class="link" [routerLink]="['/product', product.id]">
+        <img
+          class="card-img-top"
+          src="{{ product.image }}"
+          alt="Card image cap"
+          width="200"
+          height="300"
+        />
+      </a>
       <div class="card-body limit">
         <h6 class="card-title">
-          <a class="link" [routerLink]="['/product', product.id]">{{
-            product.productname | uppercase
-          }}</a>
+          {{ product.productname | uppercase }}
         </h6>
 
         <h5 class="card-text"><i class="fa fa-inr"></i>{{ product.price }}</h5>

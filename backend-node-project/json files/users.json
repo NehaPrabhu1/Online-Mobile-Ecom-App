@@ -5,7 +5,13 @@
     "firstname": "Pooja",
     "lastname": "Ambavale",
     "role": "user",
-    "address": "123, 1 Street, Mumbai",
+    "address": {
+      "city": "Mumbai",
+      "street": "Road 1",
+      "residence": "ABC Apartments, B-202",
+      "country": "India",
+      "pinCode": "400001"
+    },
     "mobile": 1234567890,
     "password": "pooja"
   },
@@ -15,7 +21,13 @@
     "firstname": "Pallavi",
     "lastname": "Ghuge",
     "role": "user",
-    "address": "26, A Apartment, Delhi ",
+    "address": {
+      "city": "Mumbai",
+      "street": "AB Lane",
+      "residence": "Hill Apartment, A-101",
+      "country": "India",
+      "pinCode": "400001"
+    },
     "mobile": 9087654321,
     "password": "pallavi"
   },
@@ -25,7 +37,13 @@
     "firstname": "Kaustub",
     "lastname": "Gawade",
     "role": "user",
-    "address": "10, Colony road, Mumbai",
+    "address": {
+      "city": "Hyderabad",
+      "street": "Colony Road",
+      "residence": "New Apartments, A-301",
+      "country": "India",
+      "pinCode": "330440"
+    },
     "mobile": 1256903478,
     "password": "kaustub"
   },
@@ -38,15 +56,5 @@
     "address": "145, B Housing, Pune",
     "mobile": 987654210,
     "password": "neha"
-  },
-  {
-    "email": "preeti@gmail.com",
-    "firstname": "Preeti",
-    "lastname": "Nair",
-    "role": "user",
-    "address": "ABC Apartments, Mumbai",
-    "mobile": "9876543210",
-    "password": "preeti",
-    "id": 5
   }
 ]

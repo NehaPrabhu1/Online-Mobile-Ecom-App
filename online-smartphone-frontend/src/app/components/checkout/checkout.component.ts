@@ -29,16 +29,19 @@ export class CheckoutComponent implements OnInit {
     this.user = JSON.parse(sessionStorage.getItem('user')!);
     if (this.user) {
       this.address = JSON.parse(localStorage.getItem('Address')!);
-      console.log(this.address);
+
+      if (!this.address) {
+        this.address = this.user.address;
+      }
 
       //orderitems details from localstorage
-      this.cartService.getCartProducts(this.user.id).subscribe((res) => {
+      this.cartService.getCartProducts().subscribe((res) => {
         this.cartItems = res;
         let i = 1;
         for (let cartItem of this.cartItems) {
           let orderitem: any = {};
           orderitem.id = i;
-          orderitem.productid = cartItem.productid;
+          orderitem.productid = cartItem.id;
           orderitem.quantity = cartItem.quantity;
           this.orderitems.push(orderitem);
           this.total_payment += cartItem.quantity * cartItem.price;
@@ -85,5 +88,8 @@ export class CheckoutComponent implements OnInit {
         .deleteProductFromCart(cartItem.id)
         .subscribe((res) => console.log(res));
     }
+
+    localStorage.removeItem('Address');
+    localStorage.clear();
   }
 }
