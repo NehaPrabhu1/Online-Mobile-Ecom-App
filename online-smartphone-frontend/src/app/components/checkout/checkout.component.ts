@@ -79,7 +79,7 @@ export class CheckoutComponent implements OnInit {
       this.orderService.addNewOrder(this.order).subscribe((res) => {
         console.log(res);
       });
-      this.router.navigate(['orders']);
+      this.router.navigate(['orders']).then(() => window.location.reload());
     }
 
     //deleting all data from cartProducts

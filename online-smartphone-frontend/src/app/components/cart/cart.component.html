@@ -1,66 +1,99 @@
 <br />
-<h1 style="text-align: center">Product Cart</h1>
-<div *ngIf="cartProduct.length == 0"><h4>Cart Empty</h4></div>
-<hr />
+<div *ngIf="cartProduct.length == 0">
+  <div class="container mt-100">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card bg-white rounded">
+          <div class="card-header">
+            <h5>Cart</h5>
+          </div>
+          <div class="card-body cart">
+            <div class="col-sm-12 empty-cart-cls text-center">
+              <img
+                src="https://i.imgur.com/dCdflKN.png"
+                width="130"
+                height="130"
+                class="img-fluid mb-4 mr-3"
+              />
+              <h3><strong>Your Cart is Empty</strong></h3>
+              <h4>Add something to make me happy :)</h4>
+              <a
+                href="#"
+                class="btn btn-primary cart-btn-transform m-3"
+                data-abc="true"
+                >continue shopping</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div *ngIf="cartProduct.length > 0">
   <div class="container">
-    <div class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded">
-      <div class="card-table">
-        <div class="card-product">
-          <table class="table table-responsive">
-            <thead class class="thead-dark">
-              <tr>
-                <th>Product Image</th>
-                <th>Product Name</th>
-                <th>Product Price</th>
-                <th>Product Quantity</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tr *ngFor="let cartProduct of cartProduct">
-              <td>
-                <img src="{{ cartProduct.image }}" width="100" height="100" />
-              </td>
-              <td>{{ cartProduct.productname }}</td>
-              <td>₹{{ cartProduct.price }}</td>
-
-              <td>
-                <button (click)="decreaseQuantity(cartProduct)">-</button>
-                <input
-                  [(ngModel)]="cartProduct.quantity"
-                  min="1"
-                  max="10"
-                  size="1"
-                />
-                <button (click)="increaseQuantity(cartProduct)">+</button>
-              </td>
-
-              <td style="color: red">
-                <button
-                  (click)="deleteFromCart(cartProduct.id)"
-                  class="btn btn-danger"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="30"
-                    height="30"
-                    fill=""
-                    class="bi bi-trash3-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"
-                    />
-                  </svg>
-                </button>
-              </td>
+    <div class="card mb-4 bg-white rounded">
+      <div class="card-header">
+        <h5>Cart</h5>
+      </div>
+      <div class="card-body">
+        <table class="table table-responsive">
+          <thead class class="thead-dark">
+            <tr>
+              <th>Product Image</th>
+              <th>Product Name</th>
+              <th>Product Price</th>
+              <th>Product Quantity</th>
+              <th>Actions</th>
             </tr>
-          </table>
+          </thead>
+          <tr *ngFor="let cartProduct of cartProduct">
+            <td>
+              <img src="{{ cartProduct.image }}" width="100" height="100" />
+            </td>
+            <td>{{ cartProduct.productname }}</td>
+            <td>₹{{ cartProduct.price }}</td>
 
-          <button class="btn btn-primary" (click)="placeOrder()">
-            Place Order
-          </button>
-        </div>
+            <td>
+              <button type="button" (click)="decreaseQuantity(cartProduct)">
+                -
+              </button>
+              <input
+                [(ngModel)]="cartProduct.quantity"
+                min="1"
+                max="10"
+                size="1"
+              />
+              <button type="button" (click)="increaseQuantity(cartProduct)">
+                +
+              </button>
+            </td>
+
+            <td style="color: red">
+              <button
+                (click)="deleteFromCart(cartProduct.id)"
+                class="btn btn-danger"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill=""
+                  class="bi bi-trash3-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"
+                  />
+                </svg>
+              </button>
+            </td>
+          </tr>
+        </table>
+
+        <button class="btn btn-primary" (click)="placeOrder()">
+          Place Order
+        </button>
       </div>
     </div>
   </div>

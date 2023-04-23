@@ -70,6 +70,10 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.totalSales = 0;
+    this.orderitemCount = 0;
+    this.orderCount = 0;
+    this.productSales.fill(0);
     this.getAllProducts();
     this.brandService
       .getAllBrands()
@@ -100,13 +104,12 @@ export class AdminDashboardComponent implements OnInit {
         product.productSale = this.productSales[product.id];
         this.productNames[product.id] = product.productname;
       }
+      this.createChart();
     });
-    this.createChart();
   }
 
   onDateChange(orderdate: any) {
     if (orderdate != 0) {
-      console.log(orderdate);
       this.totalSales = 0;
       this.orderitemCount = 0;
       this.orderCount = 0;
