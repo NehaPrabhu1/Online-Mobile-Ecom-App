@@ -25,6 +25,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { CartComponent } from './components/cart/cart.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     LoginComponent,
     SignupComponent,
     CartComponent,
-    LogoutComponent
+    LogoutComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,

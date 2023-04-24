@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -39,9 +39,9 @@ export class LoginComponent implements OnInit {
             this.loginForm.reset();
             sessionStorage.setItem('user', JSON.stringify(user));
             if (user.role == 'user') {
-              this.router.navigate(['/home']).then(() => {
-                window.location.reload();
-              });
+              this.router
+                .navigate(['/cart'])
+                .then(() => window.location.reload());
             } else if (user.role == 'admin') {
               this.router
                 .navigate(['/admin'])

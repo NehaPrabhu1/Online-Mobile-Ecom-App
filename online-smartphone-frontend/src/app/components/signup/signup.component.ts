@@ -10,6 +10,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SignupComponent implements OnInit {
   public signUpForm!: FormGroup;
+  address: any = {};
+  newUser: any = {};
 
   constructor(
     private formBuilder: FormBuilder,
@@ -22,20 +24,38 @@ export class SignupComponent implements OnInit {
       email: [''],
       firstname: [''],
       lastname: [''],
-      role: 'user',
-      address: [''],
+      city: [''],
+      street: [''],
+      residence: [''],
+      country: [''],
+      pinCode: [''],
       mobile: [''],
       password: [''],
     });
   }
 
   signUp() {
+    this.newUser.email = this.signUpForm.value.email;
+    this.newUser.firstname = this.signUpForm.value.firstname;
+    this.newUser.lastname = this.signUpForm.value.lastname;
+    this.newUser.role = 'user';
+
+    this.address.city = this.signUpForm.value.city;
+    this.address.street = this.signUpForm.value.street;
+    this.address.residence = this.signUpForm.value.residence;
+    this.address.country = this.signUpForm.value.country;
+    this.address.pinCode = this.signUpForm.value.pinCode;
+    this.newUser.address = this.address;
+
+    this.newUser.mobile = this.signUpForm.value.mobile;
+    this.newUser.password = this.signUpForm.value.password;
     this.http
-      .post<any>('http://localhost:3001/users/addUser', this.signUpForm.value)
+      .post<any>('http://localhost:3001/users/addUser', this.newUser)
       .subscribe((res) => {
         alert('SIGNIN SUCCESFUL');
       });
     this.signUpForm.reset();
     this.router.navigate(['login']);
+    //console.log(this.newUser);
   }
 }

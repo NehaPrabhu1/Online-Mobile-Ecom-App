@@ -49,6 +49,9 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   createChart() {
+    if (this.chart) {
+      this.chart.destroy();
+    }
     this.chart = new Chart('MyChart', {
       type: 'line', //this denotes tha type of chart
 
@@ -70,6 +73,10 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.totalSales = 0;
+    this.orderitemCount = 0;
+    this.orderCount = 0;
+    this.productSales.fill(0);
     this.getAllProducts();
     this.brandService
       .getAllBrands()
@@ -97,28 +104,31 @@ export class AdminDashboardComponent implements OnInit {
         this.totalSales += order.total_payment;
       }
       for (let product of this.products) {
-        product.productSale = this.productSales[product.id];
+        // product.productSale = this.productSales[product.id];
         this.productNames[product.id] = product.productname;
       }
+      this.createChart();
     });
-    this.createChart();
   }
 
   onDateChange(orderdate: any) {
     if (orderdate != 0) {
-      console.log(orderdate);
       this.totalSales = 0;
       this.orderitemCount = 0;
       this.orderCount = 0;
+      this.productSales.fill(0);
       for (let order of this.orders) {
         if (order.orderdate == orderdate) {
           this.totalSales += order.total_payment;
           for (let orderitem of order.orderitems) {
             this.orderitemCount += orderitem.quantity;
+            this.productSales[orderitem.productid] += orderitem.quantity;
           }
           this.orderCount++;
         }
       }
+      console.log(this.productSales);
+      this.createChart();
     } else {
       this.ngOnInit();
     }

@@ -7,8 +7,8 @@
   <button
     class="navbar-toggler"
     type="button"
-    data-toggle="collapse"
-    data-target="#navbarSupportedContent"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent"
     aria-expanded="false"
     aria-label="Toggle navigation"
@@ -42,7 +42,9 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/orders']"> Orders</a>
+        <a class="nav-link" [routerLink]="['/orders']" *ngIf="isloggedin">
+          <i class="fa-solid fa-user"></i>{{ user.firstname }}</a
+        >
       </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/login']" *ngIf="!isloggedin"

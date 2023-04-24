@@ -79,14 +79,13 @@ export class CheckoutComponent implements OnInit {
       this.orderService.addNewOrder(this.order).subscribe((res) => {
         console.log(res);
       });
-      this.router.navigate(['orders']);
-    }
-
-    //deleting all data from cartProducts
-    for (let cartItem of this.cartItems) {
-      this.cartService
-        .deleteProductFromCart(cartItem.id)
-        .subscribe((res) => console.log(res));
+      //deleting all data from cartProducts
+      for (let cartItem of this.cartItems) {
+        this.cartService
+          .deleteProductFromCart(cartItem.id)
+          .subscribe((res) => console.log(res));
+      }
+      this.router.navigate(['orders']).then(() => window.location.reload());
     }
 
     localStorage.removeItem('Address');
