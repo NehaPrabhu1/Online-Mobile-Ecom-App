@@ -83,9 +83,12 @@ export class CheckoutComponent implements OnInit {
       for (let cartItem of this.cartItems) {
         this.cartService
           .deleteProductFromCart(cartItem.id)
-          .subscribe((res) => console.log(res));
+          .subscribe((res) =>
+            this.router
+              .navigate(['orders'])
+              .then(() => window.location.reload())
+          );
       }
-      this.router.navigate(['orders']).then(() => window.location.reload());
     }
 
     localStorage.removeItem('Address');
