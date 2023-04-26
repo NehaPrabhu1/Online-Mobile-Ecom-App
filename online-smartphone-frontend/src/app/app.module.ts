@@ -26,6 +26,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { CartComponent } from './components/cart/cart.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { AdminOrdersComponent } from './components/admin/admin-orders/admin-orders.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
     SignupComponent,
     CartComponent,
     LogoutComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    AdminOrdersComponent
   ],
   imports: [
     BrowserModule,

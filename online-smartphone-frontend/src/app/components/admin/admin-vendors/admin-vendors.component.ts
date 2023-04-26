@@ -9,6 +9,7 @@ import { VendorService } from 'src/app/services/vendor.service';
 export class AdminVendorsComponent implements OnInit {
   vendors: any[] = [];
   newVendor: any = {};
+  isUpdate: boolean = false;
 
   constructor(private vendorService: VendorService) {}
 
@@ -52,5 +53,27 @@ export class AdminVendorsComponent implements OnInit {
       });
       window.location.reload();
     }
+  }
+
+  updateVendor(vendor: any) {
+    this.newVendor = vendor;
+    this.isUpdate = true;
+  }
+
+  updateThisVendor() {
+    if (this.validateVendor()) {
+      this.vendorService.updateVendor(this.newVendor).subscribe((res) => {
+        alert('Vendor updated.');
+      });
+      this.isUpdate = false;
+      window.location.reload();
+    }
+  }
+
+  deleteVendor(vendor: any) {
+    this.vendorService
+      .deleteVendor(vendor.id)
+      .subscribe((res) => console.log('Product deleted'));
+    window.location.reload();
   }
 }

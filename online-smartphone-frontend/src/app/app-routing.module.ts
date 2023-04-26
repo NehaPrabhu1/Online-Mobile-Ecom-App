@@ -15,12 +15,15 @@ import { SignupComponent } from './components/signup/signup.component';
 import { CartComponent } from './components/cart/cart.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { AdminOrdersComponent } from './components/admin/admin-orders/admin-orders.component';
 
 const routes: Routes = [
   { path: '', component: ProductComponent },
   { path: 'home', component: ProductComponent },
   { path: 'product', component: ProductComponent },
   { path: 'product/:id', component: ProductDetailsComponent },
+  { path: 'product/brand/:id', component: ProductComponent },
+  { path: 'product/search/:search', component: ProductComponent },
   { path: 'contact-us', component: ContactUsComponent },
   { path: 'admin', component: AdminDashboardComponent },
   { path: 'admin/products', component: AdminProductsComponent },
@@ -34,6 +37,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'forgotPassword', component: ForgetPasswordComponent },
+  { path: 'admin/orders', component: AdminOrdersComponent },
 ];
 
 @NgModule({

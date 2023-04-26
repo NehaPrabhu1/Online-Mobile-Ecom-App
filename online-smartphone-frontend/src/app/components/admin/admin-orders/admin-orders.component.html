@@ -1,0 +1,48 @@
+<br />
+<br />
+<div>
+  <nav class="navbar navbar-light bg-primary">
+    <div class="container-fluid">
+      <h1 style="color: white">Smartphone Orders</h1>
+      <div class="d-flex"></div>
+    </div>
+  </nav>
+  <div class="table-responsive-sm">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Order id</th>
+          <th scope="col">User id</th>
+          <th scope="col">Products Ordered - Quantity</th>
+          <th scope="col">Delivery Address</th>
+          <th scope="col">Order DateTime</th>
+          <th scope="col">Total Payment</th>
+          <th scope="col">Payment Method</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of allOrders">
+          <td>{{ row.id }}</td>
+          <td>
+            {{ row.userid }} - {{ row.user.firstname }} {{ row.user.lastname }}
+          </td>
+          <td>
+            <div *ngFor="let orderitem of row.orderitems">
+              {{ orderitem.product.productname }} - {{ orderitem.quantity }}
+            </div>
+          </td>
+          <td>
+            {{ row.delivery_address.residence }},{{
+              row.delivery_address.street
+            }}
+            <br />
+            {{ row.delivery_address.city }} - {{ row.delivery_address.pinCode }}
+          </td>
+          <td>{{ row.orderdate }} - {{ row.orderime }}</td>
+          <td>{{ row.total_payment }}</td>
+          <td>{{ row.payment_method }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

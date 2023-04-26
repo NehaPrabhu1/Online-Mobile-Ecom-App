@@ -11,6 +11,8 @@ const {
   loadOrders,
   updateProduct,
   deleteProduct,
+  updateVendor,
+  deleteVendor,
 } = require('./json_models');
 
 const express = require('express');
@@ -43,6 +45,16 @@ app.get('/products/:id', (req, res) => {
   products.filter((product) => {
     if (product.id == id) {
       res.send(product);
+    }
+  });
+});
+
+app.get('/users/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const users = loadUsers();
+  users.filter((user) => {
+    if (user.id == id) {
+      res.send(user);
     }
   });
 });
@@ -143,9 +155,18 @@ app.put('/product/updateProduct', (req, res) => {
   updateProduct(product);
 });
 
+app.put('/vendor/updateVendor', (req, res) => {
+  const vendor = req.body;
+  updateVendor(vendor);
+});
+
 //---------------delete--------------------------//
 app.delete('/product/deleteProduct/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  console.log(id);
   deleteProduct(id);
+});
+
+app.delete('/vendor/deleteVendor/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  deleteVendor(id);
 });

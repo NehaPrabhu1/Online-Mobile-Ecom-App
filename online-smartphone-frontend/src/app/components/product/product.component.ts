@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BrandService } from 'src/app/services/brand.service';
 import { CartService } from 'src/app/services/cart.service';
@@ -13,31 +13,57 @@ export class ProductComponent implements OnInit {
   productList: any = [];
   brandList: any[] = [];
   productService: ProductService;
-  searchedKeyword!: string;
+  searchedKeyword: any;
   id: any;
   brandid: any;
   user: any = {};
+  isBrand = false;
+  isSearch = false;
+  brand: any = {};
+  popularProducts: any[] = [];
 
   constructor(
     productService: ProductService,
     private brandService: BrandService,
     private router: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private route: ActivatedRoute
   ) {
     this.productService = productService;
   }
 
   ngOnInit(): void {
-    this.getAllProduct();
-    this.getAllBrand();
-    this.getAllBrand();
+    let path = this.route.snapshot.routeConfig?.path;
+    if (path?.includes('brand')) {
+      this.isBrand = true;
+      this.isSearch = false;
+      this.route.paramMap.subscribe((params) => {
+        let id = parseInt(params.get('id')!);
+        this.getProductByBrands(id);
+        this.brandService
+          .getBrandById(id)
+          .subscribe((res) => (this.brand = res));
+      });
+    } else if (path?.includes('search')) {
+      this.isSearch = true;
+      this.route.params.subscribe((param) => {
+        this.searchedKeyword = param['search'];
+        this.getAllProduct();
+        this.getAllBrand();
+      });
+    } else {
+      this.isBrand = false;
+      this.isSearch = false;
+      this.getAllProduct();
+      this.getAllBrand();
+    }
+    this.getPopularProducts();
   }
 
   getAllProduct() {
     this.productService.getAllProducts().subscribe(
       (response: any) => {
         this.productList = response;
-        console.log(response);
       },
       (error) => {
         console.log(error);
@@ -64,13 +90,24 @@ export class ProductComponent implements OnInit {
 
   addProductToCart(product: any) {
     product.quantity = 1;
-    // product.userid = this.user.id;
-    // product.productid = product.id;
-    // delete product.id;
-    //console.log(product);
     this.cartService.postProductToCart(product).subscribe((res) => {
       alert('Product added to cart');
       this.router.navigate(['cart']).then(() => window.location.reload());
     });
+  }
+
+  getPopularProducts() {
+    let products: any[] = [];
+    this.productService.getAllProducts().subscribe(
+      (response: any) => {
+        products = response;
+        for (let i = 3; i < 7; i++) {
+          this.popularProducts.push(products[i]);
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

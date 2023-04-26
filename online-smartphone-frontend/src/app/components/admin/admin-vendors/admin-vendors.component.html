@@ -15,10 +15,9 @@
             <th scope="col">Vendor id</th>
             <th scope="col">Name</th>
             <th scope="col">Email Address</th>
-            <th scope="col">Address Line</th>
-            <th scope="col">City</th>
-            <th scope="col">Pin Code</th>
+            <th scope="col">Address</th>
             <th scope="col">Contact No.</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -26,10 +25,31 @@
             <td>{{ row.id }}</td>
             <td>{{ row.name }}</td>
             <td>{{ row.email }}</td>
-            <td>{{ row.address }}</td>
-            <td>{{ row.city }}</td>
-            <td>{{ row.pincode }}</td>
+            <td>
+              {{ row.address }},<br />
+              {{ row.city }} - {{ row.pincode }}
+            </td>
             <td>{{ row.phone }}</td>
+            <td width="200px">
+              <button
+                style="color: aliceblue"
+                type="button"
+                class="btn btn-info"
+                data-bs-toggle="modal"
+                data-bs-target="#changeModal"
+                (click)="updateVendor(row)"
+                value="Update"
+              >
+                Update
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger mx-3"
+                (click)="deleteVendor(row)"
+              >
+                Delete
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -113,8 +133,17 @@
                 type="button"
                 (click)="addNewVendor()"
                 class="btn btn-primary"
+                *ngIf="!isUpdate"
               >
                 Add
+              </button>
+              <button
+                type="button"
+                (click)="updateThisVendor()"
+                class="btn btn-primary"
+                *ngIf="isUpdate"
+              >
+                Update
               </button>
             </div>
           </div>

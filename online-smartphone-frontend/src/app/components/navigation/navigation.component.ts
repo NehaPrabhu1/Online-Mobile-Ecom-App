@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { BrandService } from 'src/app/services/brand.service';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -12,8 +14,14 @@ export class NavigationComponent implements OnInit {
   isloggedin: boolean = false;
   cartItems: any = {};
   cartCount: number = 0;
+  brands: any[] = [];
+  searchedKeyword: any = '';
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private brandService: BrandService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.user = JSON.parse(sessionStorage.getItem('user')!);
@@ -27,5 +35,7 @@ export class NavigationComponent implements OnInit {
       this.cartItems = res;
       this.cartCount = this.cartItems.length;
     });
+
+    this.brandService.getAllBrands().subscribe((res) => (this.brands = res));
   }
 }

@@ -8,7 +8,75 @@
   crossorigin="anonymous"
 ></script>
 
-<div class="form-group col-md-7" style="padding: 5px">
+<div style="margin: 1px; width: 100%" *ngIf="!isBrand && !isSearch">
+  <div
+    id="carouselExampleControls"
+    class="carousel slide carousel-fade"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="2000">
+        <img
+          style="height: 390px"
+          src="https://www.sammyfans.com/wp-content/uploads/2022/06/galaxy-s23-ultra3.jpg"
+          class="d-block w-100"
+          alt="..."
+        />
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="display-4 text-dark">Latest Mobile</h5>
+          <p class="text-white">One Stop Shop for all the mobiles.</p>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img
+          style="height: 390px"
+          src="https://m-cdn.phonearena.com/images/reviews/243215-image/14-Family-Back-NEW.jpg"
+          class="d-block w-100"
+          alt="..."
+        />
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="display-4">Popular Mobile</h5>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img
+          style="height: 390px"
+          src="https://candlemonk.s3.ap-south-1.amazonaws.com/userassets/blogcoverpic/medium/1625715080005.jpg"
+          class="d-block w-100"
+          alt="..."
+        />
+        <div class="carousel-caption d-none d-md-block">
+          <h5 class="display-4">Available on single click</h5>
+        </div>
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+    <br />
+  </div>
+</div>
+
+<section *ngIf="isBrand" style="text-align: center">
+  <h2>{{ brand.name }}</h2>
+</section>
+
+<!-- <div class="form-group" style="padding: 5px">
   <div class="input-group">
     <input
       type="text"
@@ -19,29 +87,29 @@
       ><i class="fa-solid fa-magnifying-glass"></i
     ></span>
   </div>
-</div>
+</div> -->
 
 <!-- <div class="list-group" *ngFor="let brand of brandList">
     <button class="btn btn-outline-dark" (click)="getProductByBrands(brand.id)">
       {{ brand.name }}
     </button>
   </div> -->
-<div class="form-group">
-  <div class="dropdown col-md-2" style="float: right; padding: 5px">
-    <h3>Filter by Brands</h3>
-    <select
-      class="form-select"
-      name="brand"
-      [(ngModel)]="brandid"
-      (change)="getProductByBrands(brandid)"
-    >
-      <option [value]="0" selected="selected">Select Brand</option>
-      <option *ngFor="let brand of brandList" [value]="brand.id">
-        {{ brand.name }}
-      </option>
-    </select>
-  </div>
-</div>
+<!-- <div class="form-group">
+    <div class="dropdown col-md-2" style="float: right; padding: 5px">
+      <h3>Filter by Brands</h3>
+      <select
+        class="form-select"
+        name="brand"
+        [(ngModel)]="brandid"
+        (change)="getProductByBrands(brandid)"
+      >
+        <option [value]="0" selected="selected">Select Brand</option>
+        <option *ngFor="let brand of brandList" [value]="brand.id">
+          {{ brand.name }}
+        </option>
+      </select>
+    </div>
+  </div> -->
 
 <!-- <div class="dropdown col-md-3"style="float: right; padding: 5px">
  <select class="form-select" name="brand" [(ngModel)]="brandid" (change)="getProductByBrands(brandid)">
@@ -52,14 +120,19 @@
   
    </div>  -->
 
-<div class="col-md-10">
+<section id="feature" *ngIf="!isBrand && !isSearch">
+  <h2>Featured Products</h2>
+  <p>Latest mobile phones at one place.</p>
+</section>
+
+<section style="text-align: center">
   <div
-    style="display: inline-block; padding: 20px"
+    style="display: inline-block; padding: 10px"
     *ngFor="let product of productList | filter : searchedKeyword"
   >
     <div
-      class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded"
-      style="width: 16rem; height: 30rem"
+      class="card mb-3 shadow-sm p-3 bg-white rounded"
+      style="width: 16rem; height: 31rem"
     >
       <a class="link" [routerLink]="['/product', product.id]">
         <img
@@ -82,10 +155,57 @@
         </p>
         <!-- <p class="card-text">Dimensions:l-{{ product.dimension.l }}:b-{{ product.dimension.b }}:w-{{ product.dimension.w }}</p> -->
 
-        <button class="btn btn-dark" (click)="addProductToCart(product)">
+        <button (click)="addProductToCart(product)" class="addtocart">
           <i class="fa fa-shopping-cart"> Add to Cart </i>
         </button>
       </div>
     </div>
+  </div>
+</section>
+<div>
+  <section id="popular" style="text-align: center">
+    <h2>Popular Products</h2>
+    <p>Top rated by our customers</p>
+    <div
+      style="display: inline-block; padding: 10px"
+      *ngFor="let product of popularProducts"
+    >
+      <div
+        class="card mb-3 shadow-sm p-3 bg-white rounded"
+        style="width: 16rem; height: 31rem"
+      >
+        <a class="link" [routerLink]="['/product', product.id]">
+          <img
+            class="card-img-top"
+            src="{{ product.image }}"
+            alt="Card image cap"
+            width="200"
+            height="300"
+          />
+        </a>
+        <div class="card-body limit">
+          <h6 class="card-title">
+            {{ product.productname | uppercase }}
+          </h6>
+
+          <h5 class="card-text">
+            <i class="fa fa-inr"></i>{{ product.price }}
+          </h5>
+
+          <p class="card-text text-muted">
+            Ram {{ product.RAM }}GB Storage {{ product.storage }}GB
+          </p>
+          <!-- <p class="card-text">Dimensions:l-{{ product.dimension.l }}:b-{{ product.dimension.b }}:w-{{ product.dimension.w }}</p> -->
+
+          <button (click)="addProductToCart(product)" class="addtocart">
+            <i class="fa fa-shopping-cart"> Add to Cart </i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div>
+    <app-footer></app-footer>
   </div>
 </div>
