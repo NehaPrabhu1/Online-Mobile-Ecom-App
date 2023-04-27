@@ -16,6 +16,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { AdminOrdersComponent } from './components/admin/admin-orders/admin-orders.component';
+import { AdminContactMessagesComponent } from './components/admin/admin-contact-messages/admin-contact-messages.component';
 
 const routes: Routes = [
   { path: '', component: ProductComponent },
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'forgotPassword', component: ForgetPasswordComponent },
   { path: 'admin/orders', component: AdminOrdersComponent },
+  { path: 'admin/messages', component: AdminContactMessagesComponent },
 ];
 
 @NgModule({

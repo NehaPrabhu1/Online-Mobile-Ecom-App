@@ -21,6 +21,8 @@ let loadOrderItems = () =>
 let loadDeliveryAddress = () =>
   JSON.parse(readFileSync('json files/delivery_address.json'));
 
+let loadContacts = () => JSON.parse(readFileSync('json files/contact_us.json'));
+
 //-------------------------------------------------------------------------------------
 
 //--------------------------write to json files---------------------------------
@@ -38,6 +40,13 @@ let writeProduct = (product) => {
   products.push(product);
   const productJSON = JSON.stringify(products);
   writeFileSync('json files/products.json', productJSON);
+};
+
+let writeContact = (contact) => {
+  const contacts = loadContacts();
+  contacts.push(contact);
+  const contactJSON = JSON.stringify(contacts);
+  writeFileSync('json files/contact_us.json', contactJSON);
 };
 
 let writeVendor = (vendor) => {
@@ -133,4 +142,6 @@ module.exports = {
   deleteProduct,
   updateVendor,
   deleteVendor,
+  writeContact,
+  loadContacts,
 };

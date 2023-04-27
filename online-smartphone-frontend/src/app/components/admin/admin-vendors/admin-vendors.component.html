@@ -1,15 +1,19 @@
-<br />
-<br />
-<div class="row">
+<section
+  style="
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    background-color: #0000e6;
+    color: white;
+  "
+>
+  <h2>Smartphone Vendors</h2>
+</section>
+<div class="row" style="padding-top: 20px">
   <div class="col-md-8">
-    <nav class="navbar navbar-light bg-primary">
-      <div class="container-fluid">
-        <h1 style="color: white">Smartphone Vendors</h1>
-        <div class="d-flex"></div>
-      </div>
-    </nav>
     <div class="table-responsive-sm">
-      <table class="table">
+      <table class="table table-striped table-hover">
         <thead>
           <tr>
             <th scope="col">Vendor id</th>
@@ -60,7 +64,7 @@
       <div class="card-body">
         <h5 class="card-title" id="exampleModalLabel">Add Vendors</h5>
         <hr />
-        <form action="" #vendorform="ngForm">
+        <form action="" #vendorform="ngForm" class="was-validated">
           <div class="row">
             <div class="col">
               <label class="form-label" for="name">Name</label>
@@ -70,6 +74,7 @@
                 name="name"
                 class="form-control"
                 [(ngModel)]="newVendor.name"
+                required
               />
             </div>
             <div>
@@ -80,7 +85,18 @@
                 name="email"
                 class="form-control"
                 [(ngModel)]="newVendor.email"
+                #offEmail="ngModel"
+                [pattern]="emailPattern"
+                required
               />
+              <div *ngIf="offEmail.errors">
+                <div *ngIf="offEmail.errors['required']" style="color: red">
+                  Official Email required.
+                </div>
+                <div *ngIf="offEmail.errors['pattern']" style="color: red">
+                  Official Email not valid.
+                </div>
+              </div>
             </div>
             <div class="col-md-12">
               <label class="form-label" for="addressline">Address Line</label>
@@ -90,6 +106,7 @@
                 name="address"
                 class="form-control"
                 [(ngModel)]="newVendor.address"
+                required
               />
             </div>
             <div class="col-md-6">
@@ -100,6 +117,7 @@
                 name="city"
                 class="form-control"
                 [(ngModel)]="newVendor.city"
+                required
               />
             </div>
             <div class="col-md-6">
@@ -110,7 +128,15 @@
                 name="pincode"
                 class="form-control"
                 [(ngModel)]="newVendor.pincode"
+                #offPin="ngModel"
+                [pattern]="pinCodepattern"
+                required
               />
+              <div *ngIf="offPin.errors">
+                <div *ngIf="offPin.errors['pattern']" style="color: red">
+                  Pin code not valid.
+                </div>
+              </div>
             </div>
             <div class="col">
               <label class="form-label" for="phone">Contact No.</label>
@@ -120,7 +146,15 @@
                 name="phone"
                 class="form-control"
                 [(ngModel)]="newVendor.phone"
+                required
+                #offPhone="ngModel"
+                [pattern]="contactPattern"
               />
+              <div *ngIf="offPhone.errors">
+                <div *ngIf="offPhone.errors['pattern']" style="color: red">
+                  Phone no. not valid.
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
               <p></p>
@@ -130,7 +164,7 @@
                 value="Reset"
               />&nbsp;
               <button
-                type="button"
+                type="submit"
                 (click)="addNewVendor()"
                 class="btn btn-primary"
                 *ngIf="!isUpdate"
@@ -138,7 +172,7 @@
                 Add
               </button>
               <button
-                type="button"
+                type="submit"
                 (click)="updateThisVendor()"
                 class="btn btn-primary"
                 *ngIf="isUpdate"

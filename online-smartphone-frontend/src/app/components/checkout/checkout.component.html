@@ -22,12 +22,14 @@
           <div class="card mb-2">
             <div class="row g-0">
               <div class="col-md-4">
-                <img
-                  src="{{ cartItem.image }}"
-                  class="img-fluid rounded-start"
-                  alt="img"
-                  style="height: 150px; width: 125px"
-                />
+                <a class="link" [routerLink]="['/product', cartItem.id]">
+                  <img
+                    src="{{ cartItem.image }}"
+                    class="img-fluid rounded-start"
+                    alt="img"
+                    style="height: 150px; width: 125px"
+                  />
+                </a>
               </div>
               <div class="col-md-7">
                 <div class="card-body">

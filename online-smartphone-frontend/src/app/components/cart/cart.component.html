@@ -3,7 +3,7 @@
   <div class="container mt-100">
     <div class="row">
       <div class="col-md-12">
-        <div class="card bg-white rounded">
+        <div class="card bg-white rounded border">
           <div class="card-header">
             <h5>Cart</h5>
           </div>
@@ -49,7 +49,9 @@
           </thead>
           <tr *ngFor="let cartProduct of cartProduct">
             <td>
-              <img src="{{ cartProduct.image }}" width="100" height="100" />
+              <a class="link" [routerLink]="['/product', cartProduct.id]">
+                <img src="{{ cartProduct.image }}" width="100" height="100" />
+              </a>
             </td>
             <td>{{ cartProduct.productname }}</td>
             <td>₹{{ cartProduct.price }}</td>
@@ -90,10 +92,16 @@
             </td>
           </tr>
         </table>
-
-        <button class="btn btn-primary" (click)="placeOrder()">
-          Place Order
-        </button>
+        <hr />
+        <h5>Total Amount : {{ total | currency : "INR" }}</h5>
+        <div class="d-flex justify-content-between">
+          <button class="btn btn-success" (click)="placeOrder()">
+            Place Order
+          </button>
+          <button class="btn btn-primary" [routerLink]="['/home']">
+            More Shopping ..
+          </button>
+        </div>
       </div>
     </div>
   </div>

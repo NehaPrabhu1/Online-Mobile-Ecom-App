@@ -1,0 +1,34 @@
+<section
+  style="
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    background-color: #0000e6;
+    color: white;
+  "
+>
+  <h2>Contact Messages</h2>
+</section>
+<div style="padding-top: 20px">
+  <div class="table-responsive-sm">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of messages">
+          <td>{{ row.fname }} {{ row.lname }}</td>
+          <td>
+            {{ row.email }}
+          </td>
+          <td>{{ row.comment }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

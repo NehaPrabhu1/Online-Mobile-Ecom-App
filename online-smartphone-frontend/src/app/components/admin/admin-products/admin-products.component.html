@@ -1,23 +1,33 @@
-<div class="container-fluid">
-  <nav class="navbar navbar-light bg-primary">
-    <div class="container-fluid">
-      <h1 style="color: white">Smartphones</h1>
-      <div class="d-flex">
-        <button
-          type="button"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-          class="btn btn-success"
-          (click)="clear()"
-        >
-          Add Product
-        </button>
-      </div>
+<section
+  style="
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    background-color: #0000e6;
+    color: white;
+  "
+>
+  <div class="d-flex justify-content-center">
+    <div style="padding-left: 45%">
+      <h2>Smartphones</h2>
     </div>
-  </nav>
-
+    <div class="ms-auto">
+      <button
+        type="button"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        class="btn btn-success"
+        (click)="clear()"
+      >
+        Add Product
+      </button>
+    </div>
+  </div>
+</section>
+<div class="container-fluid" style="padding-top: 20px">
   <div class="table-responsive-sm">
-    <table class="table">
+    <table class="table table-hover table-striped">
       <thead>
         <tr>
           <th scope="col">Id</th>
@@ -106,7 +116,12 @@
           ></button>
         </div>
         <div class="modal-body">
-          <form action="" #productform="ngForm" class="row g-3">
+          <form
+            action=""
+            #productform="ngForm"
+            class="row g-3 was-validated"
+            novalidate
+          >
             <div class="col-md-4">
               <label class="form-label" for="category">Category</label>
               <div class="input-group input-group-m mb-6">
@@ -114,8 +129,11 @@
                   class="form-select"
                   name="category"
                   [(ngModel)]="newProduct.categoryid"
+                  required
                 >
-                  <option value="0">--Select Category--</option>
+                  <option value="0" selected disabled>
+                    --Select Category--
+                  </option>
                   <option
                     *ngFor="let category of categories"
                     [value]="category.id"
@@ -123,6 +141,9 @@
                     {{ category.name }}
                   </option>
                 </select>
+                <div class="invalid-feedback">
+                  Please select a valid category.
+                </div>
               </div>
             </div>
 
@@ -133,12 +154,14 @@
                   class="form-select"
                   name="brand"
                   [(ngModel)]="newProduct.brandid"
+                  required
                 >
-                  <option value="0">--Select Brand--</option>
+                  <option selected disabled value="0">--Select Brand--</option>
                   <option *ngFor="let brand of brands" [value]="brand.id">
                     {{ brand.name }}
                   </option>
                 </select>
+                <div class="invalid-feedback">Please select a valid Brand.</div>
               </div>
             </div>
 
@@ -149,12 +172,16 @@
                   class="form-select"
                   name="vendor"
                   [(ngModel)]="newProduct.vendorid"
+                  required
                 >
-                  <option value="0">--Select Brand--</option>
+                  <option selectd disabled value="0">--Select Brand--</option>
                   <option *ngFor="let vendor of vendors" [value]="vendor.id">
                     {{ vendor.name }}
                   </option>
                 </select>
+                <div class="invalid-feedback">
+                  Please select a valid Vendor.
+                </div>
               </div>
             </div>
 
@@ -168,7 +195,9 @@
                 required
                 minlength="4"
                 [(ngModel)]="newProduct.productname"
+                required
               />
+              <div class="invalid-feedback">Add product name</div>
             </div>
 
             <div class="col-md-6">
@@ -179,7 +208,9 @@
                 name="color"
                 class="form-control"
                 [(ngModel)]="newProduct.color"
+                required
               />
+              <div class="invalid-feedback">Add product color</div>
             </div>
 
             <div class="col-md-6">
@@ -190,7 +221,9 @@
                 name="os"
                 class="form-control"
                 [(ngModel)]="newProduct.os"
+                required
               />
+              <div class="invalid-feedback">Add product OS</div>
             </div>
 
             <div class="col-md-3">
@@ -201,7 +234,9 @@
                 name="price"
                 class="form-control"
                 [(ngModel)]="newProduct.price"
+                required
               />
+              <div class="invalid-feedback">Add product price</div>
             </div>
 
             <div class="col-md-3">
@@ -212,7 +247,9 @@
                 name="ram"
                 class="form-control"
                 [(ngModel)]="newProduct.RAM"
+                required
               />
+              <div class="invalid-feedback">Add product RAM</div>
             </div>
 
             <div class="col-md-3">
@@ -223,7 +260,9 @@
                 name="storage"
                 class="form-control"
                 [(ngModel)]="newProduct.storage"
+                required
               />
+              <div class="invalid-feedback">Add product storage</div>
             </div>
 
             <div class="col-md-3">
@@ -234,7 +273,9 @@
                 name="camera"
                 class="form-control"
                 [(ngModel)]="newProduct.camera"
+                required
               />
+              <div class="invalid-feedback">Add product camera</div>
             </div>
 
             <div class="col-md-8">
@@ -247,6 +288,7 @@
                   class="form-control"
                   placeholder="length"
                   [(ngModel)]="dimension.l"
+                  required
                 />
                 <input
                   type="number"
@@ -255,6 +297,7 @@
                   class="form-control"
                   placeholder="breadth"
                   [(ngModel)]="dimension.b"
+                  required
                 />
                 <input
                   type="number"
@@ -263,7 +306,9 @@
                   class="form-control"
                   placeholder="width"
                   [(ngModel)]="dimension.w"
+                  required
                 />
+                <div class="invalid-feedback">Add product dimensions</div>
               </div>
             </div>
 
@@ -275,7 +320,9 @@
                 name="resolution"
                 class="form-control"
                 [(ngModel)]="newProduct.resolution"
+                required=""
               />
+              <div class="invalid-feedback">Add product resolution</div>
             </div>
 
             <div class="form-outline">
@@ -286,7 +333,9 @@
                 name="productImg"
                 class="form-control"
                 [(ngModel)]="newProduct.image"
+                required=""
               />
+              <div class="invalid-feedback">Add product image url</div>
             </div>
             <div class="modal-footer">
               <input type="reset" class="btn btn-secondary" value="Reset" />
@@ -324,7 +373,7 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form action="" #productform="ngForm" class="row g-3">
+        <form action="" #productform="ngForm" class="row g-3 was-validated">
           <div class="col-md-4">
             <label class="form-label" for="category">Category</label>
             {{ newProduct.category }}
@@ -348,6 +397,7 @@
               name="productname"
               class="form-control"
               [(ngModel)]="newProduct.productname"
+              required
             />
           </div>
 
@@ -359,6 +409,7 @@
               name="color"
               class="form-control"
               [(ngModel)]="newProduct.color"
+              required
             />
           </div>
 
@@ -370,6 +421,7 @@
               name="os"
               class="form-control"
               [(ngModel)]="newProduct.os"
+              required
             />
           </div>
 
@@ -381,6 +433,7 @@
               name="price"
               class="form-control"
               [(ngModel)]="newProduct.price"
+              required
             />
           </div>
 
@@ -392,6 +445,7 @@
               name="ram"
               class="form-control"
               [(ngModel)]="newProduct.RAM"
+              required
             />
           </div>
 
@@ -403,6 +457,7 @@
               name="storage"
               class="form-control"
               [(ngModel)]="newProduct.storage"
+              required
             />
           </div>
 
@@ -414,6 +469,7 @@
               name="camera"
               class="form-control"
               [(ngModel)]="newProduct.camera"
+              required
             />
           </div>
 
@@ -427,6 +483,7 @@
                 class="form-control"
                 placeholder="length"
                 [(ngModel)]="dimension.l"
+                required
               />
               <input
                 type="number"
@@ -435,6 +492,7 @@
                 class="form-control"
                 placeholder="breadth"
                 [(ngModel)]="dimension.b"
+                required
               />
               <input
                 type="number"
@@ -443,6 +501,7 @@
                 class="form-control"
                 placeholder="width"
                 [(ngModel)]="dimension.w"
+                required
               />
             </div>
           </div>
@@ -455,6 +514,7 @@
               name="resolution"
               class="form-control"
               [(ngModel)]="newProduct.resolution"
+              required
             />
           </div>
 
@@ -466,6 +526,7 @@
               name="productImg"
               class="form-control"
               [(ngModel)]="newProduct.image"
+              required
             />
           </div>
           <div class="modal-footer">

@@ -27,6 +27,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { AdminOrdersComponent } from './components/admin/admin-orders/admin-orders.component';
+import { AdminContactMessagesComponent } from './components/admin/admin-contact-messages/admin-contact-messages.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,8 @@ import { AdminOrdersComponent } from './components/admin/admin-orders/admin-orde
     CartComponent,
     LogoutComponent,
     ForgetPasswordComponent,
-    AdminOrdersComponent
+    AdminOrdersComponent,
+    AdminContactMessagesComponent
   ],
   imports: [
     BrowserModule,

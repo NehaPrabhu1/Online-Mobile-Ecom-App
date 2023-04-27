@@ -1,114 +1,294 @@
 <section class="vh-100">
   <div class="container-fluid py-2">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div class="col-md-6">
         <div class="card shadow-2-strong" style="border-radius: 1rem">
           <div class="card-body p-3 text-center">
-            <h1 class="mb-5"><b>Sign Up</b></h1>
+            <h1 class="mb-3"><b>Sign Up</b></h1>
             <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
-              <div class="form-outline mb-4">
+              <div class="form-outline mb-3">
                 <input
                   formControlName="email"
                   required
                   type="email"
                   class="form-control form-control-lg"
                   placeholder="Email"
+                  [pattern]="emailPattern"
                 />
+                <div *ngIf="signUpForm.get('email')!.errors">
+                  <div
+                    *ngIf="signUpForm.get('email')!.hasError('pattern')"
+                    class="alert alert-danger"
+                  >
+                    Email Not Valid
+                  </div>
+                </div>
+                <div
+                  *ngIf="
+                    signUpForm.get('email')!.invalid &&
+                    signUpForm.get('email')!.touched
+                  "
+                >
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="signUpForm.get('email')!.hasError('required')"
+                  >
+                    Email is required
+                  </div>
+                  <div *ngIf="signUpForm.get('email')!.hasError('email')">
+                    Please enter a valid email
+                  </div>
+                </div>
                 <!-- <label class="form-label" for="typeEmailX-2">Email</label> -->
               </div>
-
-              <div class="form-outline mb-4">
-                <input
-                  formControlName="firstname"
-                  type="firstname"
-                  class="form-control form-control-lg"
-                  placeholder="First Name"
-                />
-              </div>
-
-              <div class="form-outline mb-4">
-                <input
-                  formControlName="lastname"
-                  type="lastname"
-                  class="form-control form-control-lg"
-                  placeholder="Last Name"
-                />
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-outline mb-3">
+                    <input
+                      formControlName="firstname"
+                      type="text"
+                      id="firstname"
+                      required
+                      class="form-control form-control-lg"
+                      placeholder="First Name"
+                    />
+                    <div
+                      *ngIf="
+                        signUpForm.get('firstname')!.invalid &&
+                        signUpForm.get('firstname')!.touched
+                      "
+                    >
+                      <div
+                        class="alert alert-danger"
+                        *ngIf="
+                          signUpForm.get('firstname')!.hasError('required')
+                        "
+                      >
+                        First Name is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-outline mb-3">
+                    <input
+                      formControlName="lastname"
+                      type="lastname"
+                      class="form-control form-control-lg"
+                      placeholder="Last Name"
+                      required
+                    />
+                    <div
+                      *ngIf="
+                        signUpForm.get('lastname')!.invalid &&
+                        signUpForm.get('lastname')!.touched
+                      "
+                    >
+                      <div
+                        class="alert alert-danger"
+                        *ngIf="signUpForm.get('lastname')!.hasError('required')"
+                      >
+                        Last Name is required
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <!-- <div class="form-outline mb-4">
                 <input formControlName="role"  type="role" class="form-control form-control-lg" placeholder="Role"/>
               </div>  -->
 
-              <div class="form-outline mb-4">
+              <div class="form-outline mb-3">
                 <input
                   formControlName="residence"
                   type="residence"
                   class="form-control form-control-lg"
                   placeholder="Residence"
+                  required
                 />
+                <div
+                  *ngIf="
+                    signUpForm.get('residence')!.invalid &&
+                    signUpForm.get('residence')!.touched
+                  "
+                >
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="signUpForm.get('residence')!.hasError('required')"
+                  >
+                    Residence is required
+                  </div>
+                </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <div class="form-outline mb-4">
+                  <div class="form-outline mb-3">
                     <input
                       formControlName="city"
                       type="city"
                       class="form-control form-control-lg"
                       placeholder="City"
+                      required
                     />
+                    <div
+                      *ngIf="
+                        signUpForm.get('city')!.invalid &&
+                        signUpForm.get('city')!.touched
+                      "
+                    >
+                      <div
+                        class="alert alert-danger"
+                        *ngIf="signUpForm.get('city')!.hasError('required')"
+                      >
+                        City is required
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="form-outline mb-4">
+                  <div class="form-outline mb-3">
                     <input
                       formControlName="street"
                       type="street"
                       class="form-control form-control-lg"
                       placeholder="Street"
+                      required
                     />
+                    <div
+                      *ngIf="
+                        signUpForm.get('street')!.invalid &&
+                        signUpForm.get('street')!.touched
+                      "
+                    >
+                      <div
+                        class="alert alert-danger"
+                        *ngIf="signUpForm.get('street')!.hasError('required')"
+                      >
+                        Street is required
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="form-outline mb-4">
+                  <div class="form-outline mb-3">
                     <input
                       formControlName="country"
                       type="country"
                       class="form-control form-control-lg"
                       placeholder="Country"
+                      required
                     />
+                    <div
+                      *ngIf="
+                        signUpForm.get('country')!.invalid &&
+                        signUpForm.get('country')!.touched
+                      "
+                    >
+                      <div
+                        class="alert alert-danger"
+                        *ngIf="signUpForm.get('country')!.hasError('required')"
+                      >
+                        Country is required
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="form-outline mb-4">
+                  <div class="form-outline mb-3">
                     <input
                       formControlName="pinCode"
                       type="pinCode"
                       class="form-control form-control-lg"
                       placeholder="Pin Code"
+                      [pattern]="pinCodePattern"
+                      required
                     />
+                    <div *ngIf="signUpForm.get('pinCode')!.errors">
+                      <div
+                        *ngIf="signUpForm.get('pinCode')!.hasError('pattern')"
+                        class="alert alert-danger"
+                      >
+                        Pincode Not Valid
+                      </div>
+                    </div>
+                    <div
+                      *ngIf="
+                        signUpForm.get('pinCode')!.invalid &&
+                        signUpForm.get('pinCode')!.touched
+                      "
+                    >
+                      <div
+                        class="alert alert-danger"
+                        *ngIf="signUpForm.get('pinCode')!.hasError('required')"
+                      >
+                        Pin Code is required
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div class="form-outline mb-4">
+              <div class="form-outline mb-3">
                 <input
                   formControlName="mobile"
                   type="mobile"
                   class="form-control form-control-lg"
                   placeholder="Mobile"
+                  [pattern]="contactPattern"
+                  required
                 />
+                <div *ngIf="signUpForm.get('mobile')!.errors">
+                  <div
+                    *ngIf="signUpForm.get('mobile')!.hasError('pattern')"
+                    class="alert alert-danger"
+                  >
+                    Mobile no Not Valid
+                  </div>
+                </div>
+                <div
+                  *ngIf="
+                    signUpForm.get('mobile')!.invalid &&
+                    signUpForm.get('mobile')!.touched
+                  "
+                >
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="signUpForm.get('mobile')!.hasError('required')"
+                  >
+                    Mobile No is required
+                  </div>
+                </div>
               </div>
 
-              <div class="form-outline mb-4">
+              <div class="form-outline mb-3">
                 <input
                   formControlName="password"
                   type="password"
                   class="form-control form-control-lg"
                   placeholder="Password"
+                  required
                 />
+                <div
+                  *ngIf="
+                    signUpForm.get('password')!.invalid &&
+                    signUpForm.get('password')!.touched
+                  "
+                >
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="signUpForm.get('password')!.hasError('required')"
+                  >
+                    Password is required
+                  </div>
+                </div>
               </div>
 
-              <button class="btn btn-primary btn-lg btn-block" type="submit">
+              <button
+                class="btn btn-primary btn-lg btn-block"
+                type="submit"
+                [disabled]="signUpForm!.invalid"
+              >
                 Create Account
               </button>
               <hr />

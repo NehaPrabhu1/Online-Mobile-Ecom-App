@@ -5,6 +5,28 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Ecommerce Mobile</a>
+
+  <form>
+    <div class="input-group input-group-sm" style="width: 500px">
+      <input
+        name="search"
+        id="search"
+        type="text"
+        class="form-control"
+        placeholder="Search"
+        [(ngModel)]="searchedKeyword"
+      />
+      <span class="input-group-text">
+        <button
+          class="link"
+          style="border: 0"
+          [routerLink]="['/product/search/', searchedKeyword]"
+        >
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </span>
+    </div>
+  </form>
   <button
     class="navbar-toggler"
     type="button"
@@ -19,28 +41,7 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-      <li>
-        <form>
-          <div class="input-group input-group-sm">
-            <input
-              name="search"
-              id="search"
-              type="text"
-              class="form-control"
-              placeholder="Search"
-              [(ngModel)]="searchedKeyword"
-            />
-            <div class="input-group-append">
-              <button
-                class="link"
-                [routerLink]="['/product/search/', searchedKeyword]"
-              >
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </div>
-          </div>
-        </form>
-      </li>
+      <li></li>
 
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/home']">Home</a>
@@ -57,7 +58,10 @@
         >
           Brands
         </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <ul
+          class="dropdown-menu dropdown-menu-dark"
+          aria-labelledby="navbarDropdown"
+        >
           <li *ngFor="let brand of brands">
             <a
               class="dropdown-item"

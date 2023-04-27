@@ -72,8 +72,8 @@
   </div>
 </div>
 
-<section *ngIf="isBrand" style="text-align: center">
-  <h2>{{ brand.name }}</h2>
+<section *ngIf="isBrand" style="text-align: center; padding-top: 10px">
+  <h2>{{ brand.name }} Mobiles</h2>
 </section>
 
 <!-- <div class="form-group" style="padding: 5px">
@@ -125,6 +125,9 @@
   <p>Latest mobile phones at one place.</p>
 </section>
 
+<section *ngIf="isSearch" style="text-align: center">
+  <h2>Search results for: {{ searchedKeyword }}</h2>
+</section>
 <section style="text-align: center">
   <div
     style="display: inline-block; padding: 10px"
@@ -162,9 +165,26 @@
     </div>
   </div>
 </section>
+
+<section
+  id="banner"
+  style="
+    text-align: center;
+    color: aliceblue;
+    height: 140px;
+    width: 100%;
+    padding-top: 20px;
+    background: url(https://png.pngtree.com/thumb_back/fh260/background/20190221/ourmid/pngtree-texture-geometric-black-metal-gradient-image_17809.jpg);
+  "
+>
+  <div>
+    <h3>Explore More</h3>
+    <button class="btn btn-success">Get started</button>
+  </div>
+</section>
 <div>
-  <section id="popular" style="text-align: center">
-    <h2>Popular Products</h2>
+  <section id="popular" style="text-align: center; padding-top: 10px">
+    <h2>Popular Picks</h2>
     <p>Top rated by our customers</p>
     <div
       style="display: inline-block; padding: 10px"

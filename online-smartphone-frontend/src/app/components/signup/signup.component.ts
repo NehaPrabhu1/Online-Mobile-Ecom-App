@@ -12,6 +12,9 @@ export class SignupComponent implements OnInit {
   public signUpForm!: FormGroup;
   address: any = {};
   newUser: any = {};
+  emailPattern = '^[a-z0-9._%+-]+@[a-z0-9]+.[a-z]{2,4}$';
+  pinCodePattern = '^[0-9]{6}$';
+  contactPattern = '^[0-9]{10}$';
 
   constructor(
     private formBuilder: FormBuilder,

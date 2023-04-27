@@ -9,9 +9,13 @@
 </style>
 <div class="container">
   <br />
-  <div class="card shadow-sm p-3 bg-white">
+  <div class="card shadow-sm bg-white">
     <div class="row">
-      <div class="col-md-5 zoom" style="float: left; margin-top: 20px">
+      <div
+        class="col-md-5 p-3"
+        style="float: left; margin-top: 20px"
+        style="text-align: center"
+      >
         <img
           class="product-img"
           src="{{ product.image }}"
@@ -22,10 +26,14 @@
 
       <div class="col-md-7" style="float: right">
         <div class="details">
-          <div class="col-md-12">
+          <div
+            class="col-md-12"
+            style="background-color: #b3cccc; text-align: center"
+          >
             <h1>{{ product.productname }}</h1>
+            <hr />
           </div>
-          <hr />
+
           <h6 class="text-muted">Category : {{ product.category }}</h6>
           <h3>Price : {{ product.price | currency : "INR" }}</h3>
 
@@ -70,8 +78,8 @@
             </tbody>
           </table>
 
-          <h5>Brand : {{ product.brand }}</h5>
-          <h5>Operating System : {{ product.os }}</h5>
+          <h6>Brand : {{ product.brand }}</h6>
+          <h6>Operating System : {{ product.os }}</h6>
           <h6>
             Dimension : {{ product.dimension.l }}mm,
             {{ product.dimension.b }}mm, {{ product.dimension.w }}mm

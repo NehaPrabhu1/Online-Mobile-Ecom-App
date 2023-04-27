@@ -1,0 +1,26 @@
+[
+  {
+    "fname": "John",
+    "lname": "Andrew",
+    "email": "john@gmail.com",
+    "comment": "Some Query"
+  },
+  {
+    "fname": "Priya",
+    "lname": "Patil",
+    "email": "Priya@gmail.com",
+    "comment": "xyz"
+  },
+  {
+    "fname": "David",
+    "lname": "Joseph",
+    "email": "david@gmail.com",
+    "comment": "I would like to know the delivery time of orders."
+  },
+  {
+    "fname": "Pallavi",
+    "lname": "Ghuge",
+    "email": "pallavi@gmail.com",
+    "comment": "Good mobiles"
+  }
+]

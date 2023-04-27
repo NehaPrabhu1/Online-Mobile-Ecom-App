@@ -15,10 +15,12 @@ export class CartComponent implements OnInit {
   public updatedCartProduct: any;
   user: any = {};
   isloggedin: boolean = false;
+  total: number = 0;
 
   constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
+    this.total = 0;
     this.user = JSON.parse(sessionStorage.getItem('user')!);
     if (this.user) {
       this.isloggedin = true;
@@ -31,6 +33,9 @@ export class CartComponent implements OnInit {
       if (this.cartProduct.length >= 1)
         this.singleProduct = this.cartProduct[0];
       console.log(this.cartProduct);
+      for (let p of this.cartProduct) {
+        this.total += p.price * p.quantity;
+      }
     });
   }
 
@@ -52,6 +57,7 @@ export class CartComponent implements OnInit {
         .updateCartProduct(this.updatedCartProduct, cartProduct.id)
         .subscribe((res) => console.log(cartProduct));
     }
+    this.ngOnInit();
   }
 
   decreaseQuantity(cartProduct: any) {
@@ -63,6 +69,7 @@ export class CartComponent implements OnInit {
         .updateCartProduct(this.updatedCartProduct, cartProduct.id)
         .subscribe((res) => console.log(cartProduct));
     }
+    this.ngOnInit();
   }
 
   placeOrder() {

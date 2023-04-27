@@ -10,6 +10,9 @@ export class AdminVendorsComponent implements OnInit {
   vendors: any[] = [];
   newVendor: any = {};
   isUpdate: boolean = false;
+  emailPattern = '^[a-z0-9._%+-]+@[a-z0-9]+.[a-z]{2,4}$';
+  pinCodepattern = '^[0-9]{6}$';
+  contactPattern = '^[0-9]{10}$';
 
   constructor(private vendorService: VendorService) {}
 

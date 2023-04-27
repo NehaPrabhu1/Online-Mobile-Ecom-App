@@ -24,13 +24,27 @@ export class ForgetPasswordComponent implements OnInit {
   }
 
   forgotPass() {
+    // this.http.get<any>('http://localhost:3001/users').subscribe((res) => {
+    //   const user = res.find((a: any) => {
+    //     if (a.email === this.forgotPassForm.value.email) {
+    //       alert('We have emailed password to your registered email.');
+    //       this.forgotPassForm.reset();
+    //     }
+    //   });
+    // });
+
     this.http.get<any>('http://localhost:3001/users').subscribe((res) => {
       const user = res.find((a: any) => {
         if (a.email === this.forgotPassForm.value.email) {
-          alert('We have emailed password to your registered email.');
+          console.log('Your Password is - ' + a.password);
+          alert('The password has been emailed to your registered Email Id');
           this.forgotPassForm.reset();
+          return a;
         }
       });
+      if (!user) {
+        alert('User with this email address was not found');
+      }
     });
   }
 }
