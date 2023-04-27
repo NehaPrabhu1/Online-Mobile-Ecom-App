@@ -24,36 +24,34 @@ export class LoginComponent implements OnInit {
     });
   }
   login() {
-    this.http
-      .get<any>(
-        'http://localhost:3001/users/' +
-          this.loginForm.value.email +
-          '/' +
-          this.loginForm.value.password
-      )
-      .subscribe(
-        (res) => {
-          const user = res;
-          if (user) {
-            alert('Login Succesful');
-            this.loginForm.reset();
-            sessionStorage.setItem('user', JSON.stringify(user));
-            if (user.role == 'user') {
-              this.router
-                .navigate(['/cart'])
-                .then(() => window.location.reload());
-            } else if (user.role == 'admin') {
-              this.router
-                .navigate(['/admin'])
-                .then(() => window.location.reload());
-            }
-          } else {
-            alert('user not found');
+    this.http.get<any>('http://localhost:3001/users').subscribe(
+      (res) => {
+        const user = res.find((a: any) => {
+          return (
+            a.email === this.loginForm.value.email &&
+            a.password === this.loginForm.value.password
+          );
+        });
+        if (user) {
+          alert('Login Succesful');
+          this.loginForm.reset();
+          sessionStorage.setItem('user', JSON.stringify(user));
+          if (user.role == 'user') {
+            this.router
+              .navigate(['/cart'])
+              .then(() => window.location.reload());
+          } else if (user.role == 'admin') {
+            this.router
+              .navigate(['/admin'])
+              .then(() => window.location.reload());
           }
-        },
-        (err) => {
-          alert('Something went wrong');
+        } else {
+          alert('Please Enter Valid Email Id & Password');
         }
-      );
+      },
+      (err) => {
+        alert('Something went wrong');
+      }
+    );
   }
 }

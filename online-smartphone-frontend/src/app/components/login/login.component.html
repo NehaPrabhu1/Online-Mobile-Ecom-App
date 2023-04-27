@@ -14,6 +14,19 @@
                   class="form-control form-control-lg"
                   placeholder="Email"
                 />
+                <div
+                  *ngIf="
+                    loginForm.get('email')!.invalid &&
+                    loginForm.get('email')!.touched
+                  "
+                >
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="loginForm.get('email')!.hasError('required')"
+                  >
+                    Please enter valid Email ID
+                  </div>
+                </div>
               </div>
 
               <div class="form-outline mb-4">
@@ -23,9 +36,26 @@
                   class="form-control form-control-lg"
                   placeholder="Password"
                 />
+                <div
+                  *ngIf="
+                    loginForm.get('password')!.invalid &&
+                    loginForm.get('password')!.touched
+                  "
+                >
+                  <div
+                    class="alert alert-danger"
+                    *ngIf="loginForm.get('password')!.hasError('required')"
+                  >
+                    Password is required
+                  </div>
+                </div>
               </div>
 
-              <button class="btn btn-primary btn-lg btn-block" type="submit">
+              <button
+                class="btn btn-primary btn-lg btn-block"
+                type="submit"
+                [disabled]="loginForm.invalid"
+              >
                 Login
               </button>
               <hr />

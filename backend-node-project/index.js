@@ -11,6 +11,10 @@ const {
   loadOrders,
   updateProduct,
   deleteProduct,
+  updateVendor,
+  deleteVendor,
+  loadContacts,
+  writeContact,
 } = require('./json_models');
 
 const express = require('express');
@@ -37,12 +41,24 @@ app.get('/vendors', (req, res) => res.send(loadVendors()));
 
 app.get('/orders', (req, res) => res.send(loadOrders()));
 
+app.get('/contacts', (req, res) => res.send(loadContacts()));
+
 app.get('/products/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const products = loadProducts();
   products.filter((product) => {
     if (product.id == id) {
       res.send(product);
+    }
+  });
+});
+
+app.get('/users/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const users = loadUsers();
+  users.filter((user) => {
+    if (user.id == id) {
+      res.send(user);
     }
   });
 });
@@ -131,6 +147,12 @@ app.post('/vendors/addVendor', (req, res) => {
   res.sendStatus(201).send('vendor added');
 });
 
+app.post('/contacts/addContact', (req, res) => {
+  const contact = req.body;
+  writeContact(contact);
+  res.sendStatus(201).send('Query added');
+});
+
 app.post('/orders/addOrder', (req, res) => {
   const order = req.body;
   writeOrder(order);
@@ -143,9 +165,18 @@ app.put('/product/updateProduct', (req, res) => {
   updateProduct(product);
 });
 
+app.put('/vendor/updateVendor', (req, res) => {
+  const vendor = req.body;
+  updateVendor(vendor);
+});
+
 //---------------delete--------------------------//
 app.delete('/product/deleteProduct/:id', (req, res) => {
   const id = parseInt(req.params.id);
-  console.log(id);
   deleteProduct(id);
+});
+
+app.delete('/vendor/deleteVendor/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  deleteVendor(id);
 });

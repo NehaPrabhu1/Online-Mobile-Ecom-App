@@ -21,6 +21,8 @@ let loadOrderItems = () =>
 let loadDeliveryAddress = () =>
   JSON.parse(readFileSync('json files/delivery_address.json'));
 
+let loadContacts = () => JSON.parse(readFileSync('json files/contact_us.json'));
+
 //-------------------------------------------------------------------------------------
 
 //--------------------------write to json files---------------------------------
@@ -38,6 +40,13 @@ let writeProduct = (product) => {
   products.push(product);
   const productJSON = JSON.stringify(products);
   writeFileSync('json files/products.json', productJSON);
+};
+
+let writeContact = (contact) => {
+  const contacts = loadContacts();
+  contacts.push(contact);
+  const contactJSON = JSON.stringify(contacts);
+  writeFileSync('json files/contact_us.json', contactJSON);
 };
 
 let writeVendor = (vendor) => {
@@ -86,6 +95,34 @@ let deleteProduct = (productid) => {
   const productJSON = JSON.stringify(products);
   writeFileSync('json files/products.json', productJSON);
 };
+
+let updateVendor = (vendor) => {
+  const vendors = loadVendors();
+  for (let i = 0; i < vendors.length; i++) {
+    if (vendors[i].id == vendor.id) {
+      vendors.splice(i, 1, vendor);
+      vendors[i] = vendor;
+    }
+  }
+  //products.push(product);
+  const vendorJSON = JSON.stringify(vendors);
+  writeFileSync('json files/vendors.json', vendorJSON);
+};
+
+let deleteVendor = (vendorid) => {
+  const vendors = loadVendors();
+  let indexToDelete = 0;
+  for (let i = 0; i < vendors.length; i++) {
+    if (vendors[i].id == vendorid) {
+      indexToDelete = i;
+    } else if (vendors[i].id > vendorid) {
+      vendors[i].id--;
+    }
+  }
+  vendors.splice(indexToDelete, 1);
+  const vendorJSON = JSON.stringify(vendors);
+  writeFileSync('json files/vendors.json', vendorJSON);
+};
 //--------------------------------------------------------------------------
 
 module.exports = {
@@ -103,4 +140,8 @@ module.exports = {
   writeOrder,
   updateProduct,
   deleteProduct,
+  updateVendor,
+  deleteVendor,
+  writeContact,
+  loadContacts,
 };

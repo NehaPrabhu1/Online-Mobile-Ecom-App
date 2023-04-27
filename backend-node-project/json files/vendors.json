@@ -1,1 +1,29 @@
-[{"id":1,"name":"Phone Retail","email":"phoneretailers@yahoo.com","address":"Shop No. 12, ABC Apartments, Hill Road","city":"Mumbai","pincode":"400078","phone":"9087654321"},{"id":2,"name":"ABC Shop","email":"abcshopsmartphones@gmail.com","address":"ABC Shop, New Road","city":"Pune","pincode":"717717","phone":"8907654321"},{"name":"E Retailers","email":"e-retailers@gmail.com","address":"Shop No 15,16, New Road","city":"Hyderabad","pincode":"300400","phone":"9988776654","id":3},{"name":"Home Shop","email":"homeshop@mail.com","address":"Shop No 206, SV Market","city":"Delhi","pincode":"200200","phone":"1234567890","id":4}]
+[
+  {
+    "id": 1,
+    "name": "Phone Retail",
+    "email": "phoneretailers@yahoo.com",
+    "address": "Shop No. 12, ABC Apartments, Hill Road",
+    "city": "Delhi",
+    "pincode": "332332",
+    "phone": "9087654321"
+  },
+  {
+    "id": 2,
+    "name": "ABC Shop",
+    "email": "abcshopsmartphones@gmail.com",
+    "address": "ABC Shop, New Road",
+    "city": "Pune",
+    "pincode": "717717",
+    "phone": "8907654321"
+  },
+  {
+    "name": "E Retailers",
+    "email": "e-retailers@gmail.com",
+    "address": "Shop No 15,16, New Road",
+    "city": "Hyderabad",
+    "pincode": "300400",
+    "phone": "9988776654",
+    "id": 3
+  }
+]

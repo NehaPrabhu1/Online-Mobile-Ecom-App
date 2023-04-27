@@ -9,74 +9,92 @@
 </style>
 <div class="container">
   <br />
-  <div class="col-sm-5 zoom" style="float: left; margin-top: 20px">
-    <img
-      class="product-img"
-      src="{{ product.image }}"
-      width="400"
-      height="500"
-    />
-  </div>
+  <div class="card shadow-sm bg-white">
+    <div class="row">
+      <div
+        class="col-md-5 p-3"
+        style="float: left; margin-top: 20px"
+        style="text-align: center"
+      >
+        <img
+          class="product-img"
+          src="{{ product.image }}"
+          height="510px"
+          width="450px"
+        />
+      </div>
 
-  <div class="col-sm-7" style="float: right">
-    <div class="details">
-      <h1>{{ product.productname }}</h1>
-      <hr />
-      <h6 class="text-muted">Category : {{ product.category }}</h6>
-      <h3>Price : {{ product.price | currency : "INR" }}</h3>
+      <div class="col-md-7" style="float: right">
+        <div class="details">
+          <div
+            class="col-md-12"
+            style="background-color: #b3cccc; text-align: center"
+          >
+            <h1>{{ product.productname }}</h1>
+            <hr />
+          </div>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Color</th>
-            <th scope="col">
-              <i class="material-symbols-outlined">photo_camera</i>Camera
-            </th>
-            <th scope="col">
-              <i class="material-symbols-outlined"> memory</i>RAM
-            </th>
-            <th scope="col">
-              <i class="material-symbols-outlined"> storage </i>Internal Storage
-            </th>
-            <th scope="col">Resolution</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <h4
-                [style.backgroundColor]="product.color"
-                class="product-color"
-              ></h4>
-            </td>
-            <td>
-              <h5>{{ product.camera }}px</h5>
-            </td>
-            <td>
-              <h5>{{ product.RAM }} GB</h5>
-            </td>
-            <td>
-              <h5>{{ product.storage }} GB</h5>
-            </td>
-            <td>
-              <h5>{{ product.resolution }}</h5>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <h6 class="text-muted">Category : {{ product.category }}</h6>
+          <h3>Price : {{ product.price | currency : "INR" }}</h3>
 
-      <h6>Brand : {{ product.brand }}</h6>
-      <h6>Operating System : {{ product.os }}</h6>
-      <h6>
-        Dimension : {{ product.dimension.l }}mm, {{ product.dimension.b }}mm,
-        {{ product.dimension.w }}mm
-      </h6>
-      <h6>Vendor: {{ product.vendor }}</h6>
-      <!-- <h6>Quantity : {{ product.quantity }}</h6> -->
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Color</th>
+                <th scope="col">
+                  <i class="material-symbols-outlined">photo_camera</i>Camera
+                </th>
+                <th scope="col">
+                  <i class="material-symbols-outlined"> memory</i>RAM
+                </th>
+                <th scope="col">
+                  <i class="material-symbols-outlined"> storage </i>Internal
+                  Storage
+                </th>
+                <th scope="col">Resolution</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <h4
+                    [style.backgroundColor]="product.color"
+                    class="product-color"
+                  ></h4>
+                </td>
+                <td>
+                  <h5>{{ product.camera }}px</h5>
+                </td>
+                <td>
+                  <h5>{{ product.RAM }} GB</h5>
+                </td>
+                <td>
+                  <h5>{{ product.storage }} GB</h5>
+                </td>
+                <td>
+                  <h5>{{ product.resolution }}</h5>
+                </td>
+              </tr>
+            </tbody>
+          </table>
 
-      <button class="btn btn-dark" (click)="addProductToCart(product)">
-        <i class="fa fa-shopping-cart"> Add to Cart </i>
-      </button>
+          <h6>Brand : {{ product.brand }}</h6>
+          <h6>Operating System : {{ product.os }}</h6>
+          <h6>
+            Dimension : {{ product.dimension.l }}mm,
+            {{ product.dimension.b }}mm, {{ product.dimension.w }}mm
+          </h6>
+          <h6>Vendor: {{ product.vendor }}</h6>
+
+          <!-- <h6>Quantity : {{ product.quantity }}</h6> -->
+          <hr />
+          <div>
+            <button class="btn btn-dark" (click)="addProductToCart(product)">
+              <i class="fa fa-shopping-cart"> Add to Cart </i>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
